@@ -43,7 +43,6 @@ button{font-family:inherit;cursor:pointer;}
 a{color:inherit;text-decoration:none;}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-/* 관리자 바 */
 .admin-bar{
   display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
   background:#f59e0b;color:#1a1000;font-size:12.5px;font-weight:700;
@@ -56,7 +55,6 @@ a{color:inherit;text-decoration:none;}
 }
 .admin-bar button:hover{background:#1a1000;color:#f59e0b;}
 
-/* 테마 토글 */
 .theme-toggle{
   position:fixed;top:14px;right:16px;z-index:200;
   width:38px;height:38px;border-radius:50%;
@@ -66,7 +64,6 @@ a{color:inherit;text-decoration:none;}
 }
 .theme-toggle:hover{border-color:var(--accent);}
 
-/* 헤더 */
 .site-header{
   background:var(--panel);border-bottom:1px solid var(--border);
   position:sticky;top:0;z-index:50;
@@ -95,7 +92,6 @@ a{color:inherit;text-decoration:none;}
 .hstat .v{font-size:20px;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
 .hstat .k{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;}
 
-/* Hero */
 .hero{background:linear-gradient(135deg,#0E2233 0%,#1B6B69 100%);color:#fff;padding:36px 28px 32px;}
 [data-theme="dark"] .hero{background:linear-gradient(135deg,#091520 0%,#0f3b3a 100%);}
 .hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
@@ -110,12 +106,19 @@ a{color:inherit;text-decoration:none;}
   background:#FEE500;color:#1a1408;border-radius:8px;
   padding:8px 15px;font-size:13px;font-weight:800;margin-top:12px;
   white-space:nowrap;cursor:pointer;border:none;
-  transition:opacity .15s;
+  transition:opacity .15s;width:100%;justify-content:center;
 }
 .hero-kakao:hover{opacity:.82;}
 .hero-kakao-hint{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:4px;display:block;}
+.hero-phone{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;
+  margin-top:8px;color:#fff;width:100%;justify-content:center;
+}
+.hero-phone a{color:#fff;font-weight:800;text-decoration:none;}
+.hero-phone a:hover{text-decoration:underline;}
 
-/* 탭바 */
 .tab-bar{background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40;transition:background .2s,border-color .2s;}
 .tab-bar::-webkit-scrollbar{display:none;}
 .tab-inner{max-width:1440px;margin:0 auto;padding:0 28px;display:flex;}
@@ -126,7 +129,6 @@ a{color:inherit;text-decoration:none;}
 .tab-btn.active .tab-bdg{background:var(--accent-l);color:var(--accent);}
 .tab-dot{width:6px;height:6px;border-radius:50%;background:var(--daily);flex:none;}
 
-/* 메인 */
 .main-wrap{max-width:1440px;margin:0 auto;padding:24px 28px 0;}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
 .sec-title{font-size:19px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:9px;}
@@ -139,7 +141,6 @@ a{color:inherit;text-decoration:none;}
 .sort-btn:hover{color:var(--ink2);border-color:var(--accent);}
 .sort-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
 
-/* 카드 그리드 */
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
 
 .pcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,background .2s,border-color .2s;position:relative;}
@@ -187,7 +188,6 @@ body.admin-on .spec-edit-btn{display:block;}
 .ship-free{font-size:12px;font-weight:700;color:var(--free);}
 .ship-paid{font-size:12px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums;}
 
-/* 라이트박스 */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:200;align-items:center;justify-content:center;padding:28px;cursor:zoom-out;}
 .lightbox.on{display:flex;}
 .lightbox img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.7);cursor:default;transition:filter .2s;}
@@ -195,12 +195,10 @@ body.admin-on .spec-edit-btn{display:block;}
 .lb-close{position:fixed;top:16px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .lb-close:hover{background:rgba(255,255,255,.22);}
 
-/* 검색 배너 */
 .search-banner{background:var(--accent-l);border:1.5px solid var(--accent);border-radius:10px;padding:11px 16px;font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .search-banner b{font-weight:800;}
 .search-clear{margin-left:auto;border:1px solid var(--accent);background:var(--panel);color:var(--accent);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:700;flex:none;}
 
-/* 상태박스 */
 .state-box{text-align:center;padding:72px 20px;color:var(--ink3);font-size:14px;grid-column:1/-1;}
 .state-ico{font-size:40px;margin-bottom:12px;}
 .state-title{font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:5px;}
@@ -209,7 +207,6 @@ body.admin-on .spec-edit-btn{display:block;}
 .retry-btn{margin-top:14px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink2);border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;}
 .retry-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-/* 카카오 FAB */
 .inquiry-fab{
   position:fixed;bottom:24px;right:24px;z-index:90;
   background:#FEE500;color:#1a1408;border:none;border-radius:30px;
@@ -223,11 +220,9 @@ body.admin-on .spec-edit-btn{display:block;}
 .fab-main{font-size:17px;font-weight:900;letter-spacing:-.3px;line-height:1.2;}
 .fab-sub{font-size:12px;font-weight:700;color:#3a3000;opacity:.82;}
 
-/* 토스트 */
 .toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(6px);background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:22px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:999;white-space:nowrap;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* PIN 모달 */
 .modal-backdrop{position:fixed;inset:0;background:rgba(10,20,28,.55);display:none;align-items:center;justify-content:center;z-index:300;}
 .modal-backdrop.show{display:flex;}
 .modal{background:var(--panel);border-radius:var(--radius);padding:24px 26px;width:300px;box-shadow:var(--shadow-lg);}
@@ -239,17 +234,11 @@ body.admin-on .spec-edit-btn{display:block;}
 .modal-actions button{padding:9px 16px;border-radius:9px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
 .modal-actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
 
-/* 푸터 */
 .site-footer{max-width:1440px;margin:40px auto 0;padding:20px 28px;border-top:1px solid var(--border);font-size:11.5px;color:var(--ink3);text-align:center;line-height:1.9;}
 .site-footer b{color:var(--ink2);}
 #adminLink{color:var(--ink3);opacity:.4;font-size:10px;cursor:pointer;text-decoration:underline;}
 #adminLink:hover{opacity:.7;}
 
-/* 합배송 안내 배너 */
-.notice-bar{background:var(--sunrise-l);border-left:4px solid var(--sunrise);border-radius:8px;padding:12px 16px;margin:0 28px 0;max-width:calc(1440px - 56px);margin-left:auto;margin-right:auto;font-size:13px;color:var(--ink2);line-height:1.7;}
-.notice-bar b{color:var(--sunrise-dark);}
-
-/* 반응형 */
 @media(max-width:720px){
   .header-inner{padding:0 14px;height:56px;}
   .logo-sub,.header-stats{display:none;}
@@ -262,7 +251,6 @@ body.admin-on .spec-edit-btn{display:block;}
   .hero-text h1{font-size:19px;}
   .hero-box{min-width:0;max-width:100%;width:100%;}
   .main-wrap{padding:14px 12px 0;}
-  .notice-bar{margin:16px 12px 0;}
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;}
   .inquiry-fab{padding:13px 18px;gap:10px;bottom:16px;right:16px;}
   .fab-emoji{font-size:22px;}
@@ -333,8 +321,8 @@ body.admin-on .spec-edit-btn{display:block;}
       서로 다른 창고 상품은 배송비가 각각 부과됩니다.<br><br>
       <b>💬 상품·수량 문의</b><br>
       카카오톡으로 편하게 문의해 주세요.<br>
-      <button class="hero-kakao" onclick="copyKakao()">💬 카카오톡 문의하기</button>
-      <span class="hero-kakao-hint" id="heroKakaoHint">누르면 오픈채팅으로 이동해요</span>
+      <a class="hero-kakao" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener">💬 카카오톡 문의하기</a>
+      <div class="hero-phone">📞 연락처 : <a href="tel:01059257561">010-5925-7561</a></div>
     </div>
   </div>
 </section>
@@ -353,12 +341,13 @@ body.admin-on .spec-edit-btn{display:block;}
 <footer class="site-footer">
   <b>마스터 상품 카탈로그</b> · 거래처 전용<br>
   가격 및 재고는 변동될 수 있습니다 · 공급가는 별도 문의로 안내드립니다<br>
+  📞 010-5925-7561 · 💬 <a href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" style="color:var(--ink3);">카카오 오픈채팅</a><br>
   <span id="ftSync"></span><br>
   <span id="adminLink" onclick="adminClick()">관리자</span>
 </footer>
 
 <!-- 카카오 FAB -->
-<a class="inquiry-fab" id="kakaoFab" href="#" target="_blank" rel="noopener" aria-label="카카오 문의">
+<a class="inquiry-fab" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" aria-label="카카오 문의">
   <span class="fab-emoji">💬</span>
   <span class="fab-text">
     <span class="fab-main">가격 문의하기</span>
@@ -376,29 +365,16 @@ body.admin-on .spec-edit-btn{display:block;}
 <div class="toast" id="toast"></div>
 
 <script>
-/* ================================================================
-   마스터 상품 카탈로그 — donghae-catalog
-   ================================================================
-   ★ 설정 방법:
-   1. SHEET_ID → 구글 스프레드시트 ID로 교체
-      (URL: docs.google.com/spreadsheets/d/[여기]/edit)
-   2. GH_OWNER, GH_REPO → 본인 GitHub 계정/레포로 교체
-   3. KAKAO_URL → 카카오 오픈채팅 링크로 교체
-   4. ADMIN_PIN → 원하는 PIN번호로 교체
-   5. 구글시트 시트명이 SHEETS 배열의 name과 일치해야 합니다
-   ================================================================ */
-
-const SHEET_ID   = 'YOUR_GOOGLE_SHEET_ID_HERE';   // ← 구글 스프레드시트 ID
+const SHEET_ID   = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
 const GH_OWNER   = 'tjsaidaid';
 const GH_REPO    = 'donghae-catalog';
 const GH_IMG_PATH  = 'data/images.json';
 const GH_SPEC_PATH = 'data/specs.json';
 const GH_PAT_KEY   = 'master_gh_pat';
-const KAKAO_URL  = 'https://open.kakao.com/o/YOUR_OPENCHAT_ID';  // ← 오픈채팅 링크
-const ADMIN_PIN  = '10099';   // ← PIN 변경
+const KAKAO_URL  = 'https://open.kakao.com/o/sXPirMMi';
+const ADMIN_PIN  = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
-/* 창고(시트) 목록 — 구글시트 시트명과 정확히 일치해야 합니다 */
 const SHEETS = [
   {name:'당일생물', label:'당일생물', daily:true},
   {name:'동해',    label:'동해'},
@@ -419,7 +395,6 @@ const SHEETS = [
   {name:'단독(선물)',label:'단독선물'},
 ];
 
-/* 카테고리 자동 분류 */
 const CAT_EMOJI = {수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
 const CAT_RE = [
   ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로/],
@@ -432,7 +407,6 @@ const CAT_RE = [
 ];
 function catOf(n){for(const[c,r]of CAT_RE)if(r.test(n))return c;return'기타';}
 
-/* 카드 배경 그라디언트 (이미지 없을 때) */
 const GRADS=[['#e8f4fd','#b3d9f5'],['#fdf0e8','#f5c8a3'],['#edfdf0','#a3f5b3'],
              ['#f8edf5','#e8a3d9'],['#fdfbe8','#f5e8a3'],['#edeff5','#a3b0e8']];
 function gradStyle(n){
@@ -441,35 +415,17 @@ function gradStyle(n){
   return`background:linear-gradient(135deg,${c1},${c2});`;
 }
 
-/* 상태 */
 let allData={}, imgData={}, specData={};
 let activeTab=null, searchQ='', sortMode='sheet';
 let loaded=new Set(), loading=new Set(), lastHash={};
 
-/* 유틸 */
 const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>').replace(/"/g,'&quot;');
+const esc=s=>String(s==null?'':s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;');
 const pkey=s=>String(s||'').replace(/\s+/g,'').toLowerCase();
 
 function showToast(msg){
   const t=$('toast');t.textContent=msg;t.classList.add('on');
   clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2400);
-}
-
-/* SHA-256 (관리자 비밀번호용) */
-async function sha256(str){
-  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-
-/* 카카오 링크 */
-function copyKakao(){
-  const fab=$('kakaoFab');
-  if(fab)window.open(KAKAO_URL,'_blank');
-}
-function initKakao(){
-  const fab=$('kakaoFab');
-  if(fab)fab.href=KAKAO_URL;
 }
 
 /* 테마 */
@@ -483,7 +439,7 @@ function applyTheme(t){
 applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light');
 $('themeToggle').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
 
-/* 관리자 — PIN 방식 */
+/* 관리자 */
 function updateAdminUI(){
   const on=adminOn();
   $('adminBar').classList.toggle('on',on);
@@ -528,7 +484,7 @@ async function loadJsonFile(path){
   return{};
 }
 
-/* GitHub API — PAT 방식 */
+/* GitHub API */
 async function getToken(){
   let t=localStorage.getItem(GH_PAT_KEY);
   if(!t){
@@ -619,7 +575,7 @@ async function editSpec(productName){
   if(ok){render();showToast('스펙이 저장됐어요 ✅');}
 }
 
-/* 썸네일 최적화 (weserv) */
+/* 썸네일 */
 function thumbUrl(url){
   if(!url||!/^https?:\/\//.test(url))return null;
   return'https://images.weserv.nl/?url='+encodeURIComponent(url.replace(/^https?:\/\//,''))+'&w=480&h=360&fit=cover&output=webp&q=82';
@@ -644,10 +600,6 @@ function parseCSV(text){
 
 /* 구글 스프레드시트 파싱 */
 async function fetchSheet(name){
-  if(SHEET_ID==='YOUR_GOOGLE_SHEET_ID_HERE'){
-    /* SHEET_ID 미설정 시 샘플 데이터 반환 */
-    return SAMPLE_PRODUCTS.filter(p=>p.wh===name);
-  }
   const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}&t=${Date.now()}`;
   const res=await fetch(url,{cache:'no-cache'});
   if(!res.ok)throw new Error(`HTTP ${res.status}`);
@@ -682,23 +634,9 @@ async function fetchSheet(name){
   return products;
 }
 
-/* 샘플 데이터 (SHEET_ID 미설정 시 표시) */
-const SAMPLE_PRODUCTS=[
-  {wh:'당일생물',name:'통통 생물 오징어 1kg',isFree:false,ship:4000,tax:'',spec:'1kg / 상자 · 당일 13:00 마감',cat:'수산'},
-  {wh:'당일생물',name:'연안 활 대숫게 1kg',isFree:false,ship:4000,tax:'',spec:'1kg / 마리 · 당일 13:00 마감',cat:'수산'},
-  {wh:'당일생물',name:'연안 활 숫게 1kg',isFree:false,ship:4000,tax:'',spec:'1kg / 마리',cat:'수산'},
-  {wh:'당일생물',name:'생물 싱싱오징어 10마리',isFree:false,ship:4000,tax:'',spec:'10마리 / 상자',cat:'수산'},
-  {wh:'동해',name:'활 문어',isFree:false,ship:4000,tax:'',spec:'1kg 내외 / 마리 · 당일 15:00 마감',cat:'수산'},
-  {wh:'동해',name:'자연산 홍게',isFree:false,ship:4000,tax:'',spec:'3kg / 상자',cat:'수산'},
-  {wh:'인천',name:'꽃게',isFree:false,ship:4000,tax:'',spec:'1kg / 상자 · 당일 14:00 마감',cat:'수산'},
-  {wh:'군산',name:'박대',isFree:false,ship:4000,tax:'',spec:'2kg / 상자',cat:'수산'},
-  {wh:'군산',name:'곱창김',isFree:false,ship:4000,tax:'',spec:'20장 / 속',cat:'간식'},
-  {wh:'충무',name:'생굴',isFree:false,ship:4000,tax:'',spec:'1kg / 팩 · 당일 14:00 마감',cat:'수산'},
-];
-
 function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
 
-/* 탭 렌더링 */
+/* 탭 */
 function buildTabs(){
   const inner=$('tabInner');inner.innerHTML='';
   SHEETS.forEach(s=>{
@@ -736,7 +674,6 @@ function doSort(list){
   return list;
 }
 
-/* 검색 + 탭 데이터 결합 */
 function getList(){
   if(searchQ){
     const out=[];
@@ -819,13 +756,12 @@ function cardHtml(p){
   </article>`;
 }
 
-/* 에러 렌더링 */
+/* 에러 */
 function renderError(name,err){
   if(activeTab!==name)return;
   $('mainWrap').innerHTML=`<div class="card-grid"><div class="state-box"><div class="state-ico">⚠️</div><div class="state-title">불러오지 못했습니다</div><div style="font-size:12px;color:var(--ink3);margin-top:4px">${esc(String(err))}</div><button class="retry-btn" onclick="retryTab('${esc(name)}')">다시 시도</button></div></div>`;
 }
 
-/* 통계 업데이트 */
 function updateStats(){
   let t=0;Object.values(allData).forEach(a=>t+=a.length);
   $('statItems').textContent=t.toLocaleString();
@@ -853,7 +789,6 @@ async function refreshAll(){
 setInterval(()=>refreshAll(),AUTO_REFRESH);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshAll();});
 
-/* 백그라운드에서 전체 로드 */
 async function loadAll(){
   for(const s of SHEETS){
     if(loaded.has(s.name)||loading.has(s.name))continue;
@@ -884,7 +819,6 @@ document.addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
 function closeLB(){$('lightbox').classList.remove('on');$('lbImg').src='';document.body.style.overflow='';}
 
-/* 정렬 / 검색 */
 function setSort(m){sortMode=m;render();}
 function clearSearch(){$('searchInput').value='';searchQ='';render();}
 function copyName(e,name){e.stopPropagation();navigator.clipboard.writeText(name).then(()=>showToast('상품명이 복사됐어요 📋'));}
@@ -897,7 +831,6 @@ $('searchInput').addEventListener('input',e=>{
 
 /* 초기화 */
 (async()=>{
-  initKakao();
   updateAdminUI();
   [imgData,specData]=await Promise.all([loadJsonFile(GH_IMG_PATH),loadJsonFile(GH_SPEC_PATH)]);
 
@@ -915,7 +848,7 @@ $('searchInput').addEventListener('input',e=>{
   finally{loading.delete(activeTab);}
 
   render();buildTabs();
-  loadAll(); /* 백그라운드 전체 로드 */
+  loadAll();
 })();
 </script>
 </body>
