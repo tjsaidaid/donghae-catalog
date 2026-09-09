@@ -109,12 +109,11 @@ a{color:inherit;text-decoration:none;}
   transition:opacity .15s;width:100%;justify-content:center;
 }
 .hero-kakao:hover{opacity:.82;}
-.hero-kakao-hint{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:4px;display:block;}
 .hero-phone{
-  display:flex;align-items:center;gap:7px;
+  display:flex;align-items:center;justify-content:center;gap:7px;
   background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
   border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;
-  margin-top:8px;color:#fff;width:100%;justify-content:center;
+  margin-top:8px;color:#fff;width:100%;
 }
 .hero-phone a{color:#fff;font-weight:800;text-decoration:none;}
 .hero-phone a:hover{text-decoration:underline;}
@@ -260,7 +259,6 @@ body.admin-on .spec-edit-btn{display:block;}
 </head>
 <body>
 
-<!-- PIN 모달 -->
 <div class="modal-backdrop" id="pinModal">
   <div class="modal">
     <h3>🔒 관리자 모드</h3>
@@ -273,7 +271,6 @@ body.admin-on .spec-edit-btn{display:block;}
   </div>
 </div>
 
-<!-- 관리자 바 -->
 <div class="admin-bar" id="adminBar">
   🔓 <b>관리자 모드</b> — ✎ 이미지 / ✎ 스펙 버튼으로 상품 정보를 등록할 수 있어요
   <button onclick="lockAdmin()">잠그기</button>
@@ -281,13 +278,12 @@ body.admin-on .spec-edit-btn{display:block;}
 
 <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">🌙</button>
 
-<!-- 헤더 -->
 <header class="site-header">
   <div class="header-inner">
     <div class="logo">
       <span class="logo-dot"></span>
       <div>
-        <div class="logo-name">마스터 상품 카탈로그</div>
+        <div class="logo-name">(주)마스터 상품 카탈로그</div>
         <div class="logo-sub">거래처 전용 · 전국 산지 직출고</div>
       </div>
     </div>
@@ -302,12 +298,12 @@ body.admin-on .spec-edit-btn{display:block;}
   </div>
 </header>
 
-<!-- Hero -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <h1>군산·동해·인천·충무·부산<br>전국 산지 직출고 마스터</h1>
-      <p>전국 산지 어판장과 농가에서 <b>직접 수매</b>하고, <b>창고를 자체 운영</b>하며 빠르게 유통 대응하는 종합 유통사입니다.<br>소량 한 건도 택배로 즉시 납품 가능하며, 상시 <b>300~500여 가지 이상</b>의 농·축·수산물을 운영 중입니다.</p>
+      <h1>(주)마스터</h1>
+      <p>동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여 산지에서 직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.<br><br>
+      저희는 전국 산지 상품을 중심으로 상시 <b>300~500여 가지 이상</b>의 농·축·수산물을 꾸준히 운영 중이며, 소량 한 건도 <b>택배로 즉시 납품 가능</b>합니다.</p>
       <div class="hero-badges">
         <span class="hero-badge">🏭 산지 직출고</span>
         <span class="hero-badge">📦 위탁·사입 모두 가능</span>
@@ -319,7 +315,7 @@ body.admin-on .spec-edit-btn{display:block;}
       <b>📦 합포장 안내</b><br>
       합배송은 <b>같은 창고 상품끼리만</b> 가능합니다.<br>
       서로 다른 창고 상품은 배송비가 각각 부과됩니다.<br><br>
-      <b>💬 상품·수량 문의</b><br>
+      <b>💬 상품수량 및 단가 문의</b><br>
       카카오톡으로 편하게 문의해 주세요.<br>
       <a class="hero-kakao" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener">💬 카카오톡 문의하기</a>
       <div class="hero-phone">📞 연락처 : <a href="tel:01059257561">010-5925-7561</a></div>
@@ -327,26 +323,22 @@ body.admin-on .spec-edit-btn{display:block;}
   </div>
 </section>
 
-<!-- 탭바 -->
 <nav class="tab-bar"><div class="tab-inner" id="tabInner"></div></nav>
 
-<!-- 메인 콘텐츠 -->
 <main class="main-wrap" id="mainWrap">
   <div class="card-grid">
     <div class="state-box"><div class="spinner"></div><div class="state-title">상품을 불러오는 중입니다</div></div>
   </div>
 </main>
 
-<!-- 푸터 -->
 <footer class="site-footer">
-  <b>마스터 상품 카탈로그</b> · 거래처 전용<br>
+  <b>(주)마스터 상품 카탈로그</b> · 거래처 전용<br>
   가격 및 재고는 변동될 수 있습니다 · 공급가는 별도 문의로 안내드립니다<br>
   📞 010-5925-7561 · 💬 <a href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" style="color:var(--ink3);">카카오 오픈채팅</a><br>
   <span id="ftSync"></span><br>
   <span id="adminLink" onclick="adminClick()">관리자</span>
 </footer>
 
-<!-- 카카오 FAB -->
 <a class="inquiry-fab" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" aria-label="카카오 문의">
   <span class="fab-emoji">💬</span>
   <span class="fab-text">
@@ -355,54 +347,58 @@ body.admin-on .spec-edit-btn{display:block;}
   </span>
 </a>
 
-<!-- 라이트박스 -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose">✕</button>
   <img id="lbImg" alt="">
 </div>
 
-<!-- 토스트 -->
 <div class="toast" id="toast"></div>
 
 <script>
-const SHEET_ID   = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
-const GH_OWNER   = 'tjsaidaid';
-const GH_REPO    = 'donghae-catalog';
+const SHEET_ID    = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
+const GH_OWNER    = 'tjsaidaid';
+const GH_REPO     = 'donghae-catalog';
 const GH_IMG_PATH  = 'data/images.json';
 const GH_SPEC_PATH = 'data/specs.json';
 const GH_PAT_KEY   = 'master_gh_pat';
-const KAKAO_URL  = 'https://open.kakao.com/o/sXPirMMi';
-const ADMIN_PIN  = '10099';
+const KAKAO_URL   = 'https://open.kakao.com/o/sXPirMMi';
+const ADMIN_PIN   = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
+/* ---------------------------------------------------------------
+   창고(시트) 목록
+   name = 구글시트 탭 이름과 정확히 일치
+   label = 탭바에 표시할 이름
+--------------------------------------------------------------- */
 const SHEETS = [
-  {name:'당일생물', label:'당일생물', daily:true},
-  {name:'동해',    label:'동해'},
-  {name:'인천',    label:'인천'},
-  {name:'군산',    label:'군산'},
-  {name:'충무',    label:'충무'},
-  {name:'경기',    label:'경기'},
-  {name:'생고',    label:'생고'},
-  {name:'키트',    label:'키트'},
-  {name:'북구',    label:'북구'},
-  {name:'김포',    label:'김포'},
-  {name:'떡',      label:'떡'},
-  {name:'팡팡',    label:'팡팡'},
-  {name:'부산',    label:'부산'},
-  {name:'찐한국',  label:'찐한국'},
-  {name:'단독(유)', label:'단독유'},
-  {name:'단독(무)', label:'단독무'},
-  {name:'단독(선물)',label:'단독선물'},
+  {name:'당일생물',  label:'당일생물', daily:true},
+  {name:'동해',     label:'동해'},
+  {name:'인천',     label:'인천'},
+  {name:'군산',     label:'군산'},
+  {name:'충무',     label:'충무'},
+  {name:'경기',     label:'경기'},
+  {name:'생고',     label:'생고'},
+  {name:'키트',     label:'키트'},
+  {name:'북구',     label:'북구'},
+  {name:'김포',     label:'김포'},
+  {name:'떡',       label:'떡'},
+  {name:'팡팡',     label:'팡팡'},
+  {name:'부산',     label:'부산'},
+  {name:'찐한국',   label:'찐한국'},
+  {name:'단독(유)', label:'단독(유배)'},
+  {name:'단독(무)', label:'단독(무배)'},
+  {name:'단독(선물)',label:'단독(선물)'},
+  {name:'마진',     label:'마진'},
 ];
 
-const CAT_EMOJI = {수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
-const CAT_RE = [
-  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로/],
-  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육/],
+const CAT_EMOJI={수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
+const CAT_RE=[
+  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막/],
+  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창/],
   ['과일',/사과|복숭아|포도|한라봉|딸기|수박|참외|멜론|망고|바나나|블루베리|자두|체리|키위|단감|홍시|레몬|오렌지|천도|자몽/],
   ['채소',/감자|양파|마늘|대파|버섯|고구마|케일|옥수수|호박|배추|무|상추/],
   ['김치',/김치|깍두기|총각|열무|동치미|절임|된장|고추장|명이|장아찌/],
-  ['떡',/떡|찹쌀|송편/],
+  ['떡',/떡|찹쌀|송편|인절미/],
   ['간식',/엿|강정|냉면|소스|참기름|견과|밤|누룽지|짬뽕|부대찌개|국밥/],
 ];
 function catOf(n){for(const[c,r]of CAT_RE)if(r.test(n))return c;return'기타';}
@@ -415,12 +411,12 @@ function gradStyle(n){
   return`background:linear-gradient(135deg,${c1},${c2});`;
 }
 
-let allData={}, imgData={}, specData={};
-let activeTab=null, searchQ='', sortMode='sheet';
-let loaded=new Set(), loading=new Set(), lastHash={};
+let allData={},imgData={},specData={};
+let activeTab=null,searchQ='',sortMode='sheet';
+let loaded=new Set(),loading=new Set(),lastHash={};
 
 const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?'':s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'&quot;');
+const esc=s=>String(s==null?'':s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"');
 const pkey=s=>String(s||'').replace(/\s+/g,'').toLowerCase();
 
 function showToast(msg){
@@ -428,7 +424,6 @@ function showToast(msg){
   clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2400);
 }
 
-/* 테마 */
 const THEME_KEY='master_theme';
 function applyTheme(t){
   document.documentElement.setAttribute('data-theme',t);
@@ -439,7 +434,6 @@ function applyTheme(t){
 applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light');
 $('themeToggle').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
 
-/* 관리자 */
 function updateAdminUI(){
   const on=adminOn();
   $('adminBar').classList.toggle('on',on);
@@ -460,22 +454,18 @@ function tryUnlock(){
     sessionStorage.setItem('master_admin','1');
     closePinModal();
     showToast('관리자 모드로 전환됐어요 🔓');
-    updateAdminUI();
-    render();
+    updateAdminUI();render();
   }else{
     showToast('PIN이 올바르지 않습니다');
-    $('pinInput').value='';
-    $('pinInput').focus();
+    $('pinInput').value='';$('pinInput').focus();
   }
 }
 function lockAdmin(){
   sessionStorage.removeItem('master_admin');
   showToast('잠갔습니다 🔒');
-  updateAdminUI();
-  render();
+  updateAdminUI();render();
 }
 
-/* GitHub JSON 로드 */
 async function loadJsonFile(path){
   try{
     const res=await fetch(`https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}?t=${Date.now()}`,{cache:'no-cache'});
@@ -484,7 +474,6 @@ async function loadJsonFile(path){
   return{};
 }
 
-/* GitHub API */
 async function getToken(){
   let t=localStorage.getItem(GH_PAT_KEY);
   if(!t){
@@ -519,7 +508,6 @@ async function commitJson(path,data,msg){
   }catch(e){showToast('저장 실패 — 네트워크를 확인해주세요');console.error(e);return false;}
 }
 
-/* 이미지 수정 */
 function editImage(productName){
   if(!adminOn())return;
   const key=pkey(productName),current=imgData[key]||'';
@@ -562,7 +550,6 @@ function editImage(productName){
   }
 }
 
-/* 스펙 수정 */
 async function editSpec(productName){
   if(!adminOn())return;
   const key=pkey(productName),current=specData[key]||'';
@@ -575,7 +562,6 @@ async function editSpec(productName){
   if(ok){render();showToast('스펙이 저장됐어요 ✅');}
 }
 
-/* 썸네일 */
 function thumbUrl(url){
   if(!url||!/^https?:\/\//.test(url))return null;
   return'https://images.weserv.nl/?url='+encodeURIComponent(url.replace(/^https?:\/\//,''))+'&w=480&h=360&fit=cover&output=webp&q=82';
@@ -598,45 +584,83 @@ function parseCSV(text){
   return rows;
 }
 
-/* 구글 스프레드시트 파싱 */
+/* ---------------------------------------------------------------
+   구글 스프레드시트 파싱
+   시트 구조: 0=유통기한, 1=창고명, 2=상품명, 3=공급가,
+              4=택배사, 5=택배비, 6=면과세, 7=발주마감시간, 8=특이사항
+   헤더 탐지: '창고명' 또는 '상품명' 포함 행 → 그 행이 헤더
+--------------------------------------------------------------- */
 async function fetchSheet(name){
   const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}&t=${Date.now()}`;
   const res=await fetch(url,{cache:'no-cache'});
   if(!res.ok)throw new Error(`HTTP ${res.status}`);
   const rows=parseCSV(await res.text());
-  let hi=0;
-  for(let i=0;i<Math.min(rows.length,4);i++){if(rows[i].some(c=>c.includes('창고명')||c.includes('상품명'))){hi=i;break;}}
-  const hdr=rows[hi];
+
+  /* 헤더 행 찾기: '창고명' 또는 '상품명'이 들어있는 첫 번째 행 */
+  let hi=-1;
+  for(let i=0;i<Math.min(rows.length,6);i++){
+    if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){
+      hi=i;break;
+    }
+  }
+  /* 헤더를 못 찾은 경우 첫 번째 행을 헤더로 가정 */
+  if(hi<0)hi=0;
+
+  const hdr=rows[hi].map(c=>c.replace(/\s/g,''));
   const ci={
-    wh:hdr.findIndex(c=>c.includes('창고명')),
-    name:hdr.findIndex(c=>c.includes('상품명')),
-    ship:hdr.findIndex(c=>c.includes('택배비')),
-    tax:hdr.findIndex(c=>c.includes('면과세')),
-    note:hdr.findIndex(c=>c.includes('특이사항')),
-    exp:hdr.findIndex(c=>c.includes('유통기한')),
+    exp:  hdr.findIndex(c=>c.includes('유통기한')||c.includes('합배송')),   // 0열 (유통기한 or 설명)
+    wh:   hdr.findIndex(c=>c.includes('창고명')),
+    name: hdr.findIndex(c=>c.includes('상품명')),
+    ship: hdr.findIndex(c=>c.includes('택배비')),
+    tax:  hdr.findIndex(c=>c.includes('면과세')),
+    note: hdr.findIndex(c=>c.includes('발주마감시간')||c.includes('특이사항')||c.includes('마지막')),
   };
-  if(ci.wh<0)ci.wh=1;if(ci.name<0)ci.name=2;
+
+  /* fallback: 헤더 탐지 실패 시 이 시트의 고정 컬럼 위치 사용 */
+  if(ci.wh<0) ci.wh=1;
+  if(ci.name<0)ci.name=2;
+  if(ci.ship<0)ci.ship=5;
+  if(ci.tax<0) ci.tax=6;
+
   const products=[];
   for(let i=hi+1;i<rows.length;i++){
-    const r=rows[i];if(!r||r.length<2)continue;
+    const r=rows[i];
+    if(!r||r.length<3)continue;
+
+    /* 섹션 구분행 스킵: 상품명 열이 비어있거나 안내문구인 경우 */
     const nm=(r[ci.name]||'').replace(/\s+/g,' ').trim();
-    if(!nm||nm.includes('상품명')||nm.length<2)continue;
-    const wh=(r[ci.wh]||'').trim();
-    const shipRaw=(ci.ship>=0?r[ci.ship]:'').trim();
+    if(!nm||nm.length<2)continue;
+    /* 헤더 반복 행 스킵 */
+    if(nm.includes('상품명'))continue;
+    /* 섹션 타이틀 행 스킵 (창고명 열이 비어있고 상품명이 안내문구인 경우) */
+    const whCell=(r[ci.wh]||'').trim();
+    if(!whCell&&nm.length>20)continue;
+
+    const shipRaw=(ci.ship>=0&&r[ci.ship]?r[ci.ship]:'').trim();
     const isFree=/무료/.test(shipRaw)||shipRaw==='0';
     const ship=isFree?0:(parseInt(shipRaw.replace(/[^\d]/g,''),10)||0);
-    const tax=(ci.tax>=0?r[ci.tax]:'').trim();
-    const note=(ci.note>=0?r[ci.note]:'').trim();
-    const exp=(ci.exp>=0?r[ci.exp]:'').trim();
-    const sp=[];if(note&&note!=='-')sp.push(note);if(exp&&exp!=='-')sp.push('유통기한 '+exp);
-    products.push({wh,name:nm,isFree,ship,tax,spec:sp.join(' · '),cat:catOf(nm)});
+    const tax=(ci.tax>=0&&r[ci.tax]?r[ci.tax]:'').trim();
+
+    /* 발주마감 + 특이사항(9번 열) 결합 */
+    const deadline=(r[7]||'').trim();
+    const extra=(r[8]||'').trim();
+    const specParts=[];
+    if(deadline&&deadline!=='-')specParts.push(deadline);
+    if(extra&&extra!=='-'&&extra!=='품절 상품'&&extra!=='상시상품 추천'&&extra!=='일시 품절 상품')specParts.push(extra);
+
+    products.push({
+      wh:whCell||'기타',
+      name:nm,
+      isFree,ship,tax,
+      spec:specParts.join(' · '),
+      cat:catOf(nm)
+    });
   }
   return products;
 }
 
 function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
 
-/* 탭 */
 function buildTabs(){
   const inner=$('tabInner');inner.innerHTML='';
   SHEETS.forEach(s=>{
@@ -667,7 +691,6 @@ async function switchTab(name){
   }
 }
 
-/* 정렬 */
 function doSort(list){
   if(sortMode==='name')return[...list].sort((a,b)=>a.name.localeCompare(b.name,'ko'));
   if(sortMode==='free')return[...list].sort((a,b)=>(a.isFree?0:1)-(b.isFree?0:1));
@@ -684,7 +707,6 @@ function getList(){
   return{mode:'tab',list:(allData[activeTab]||[]).map(p=>({...p,_sheet:activeTab}))};
 }
 
-/* 렌더링 */
 function render(){
   const wrap=$('mainWrap');
   const{list}=getList();
@@ -718,7 +740,6 @@ function render(){
   wrap.innerHTML=html;
 }
 
-/* 카드 HTML */
 function cardHtml(p){
   const label=p._label||(SHEETS.find(s=>s.name===p._sheet)||{}).label||p.wh||'';
   const emoji=CAT_EMOJI[p.cat||catOf(p.name)]||'📦';
@@ -756,7 +777,6 @@ function cardHtml(p){
   </article>`;
 }
 
-/* 에러 */
 function renderError(name,err){
   if(activeTab!==name)return;
   $('mainWrap').innerHTML=`<div class="card-grid"><div class="state-box"><div class="state-ico">⚠️</div><div class="state-title">불러오지 못했습니다</div><div style="font-size:12px;color:var(--ink3);margin-top:4px">${esc(String(err))}</div><button class="retry-btn" onclick="retryTab('${esc(name)}')">다시 시도</button></div></div>`;
@@ -768,7 +788,6 @@ function updateStats(){
   $('statSheets').textContent=loaded.size;
 }
 
-/* 자동 갱신 */
 async function refreshAll(){
   if(document.hidden)return;
   let changed=false;
@@ -803,7 +822,6 @@ async function loadAll(){
   }
 }
 
-/* 라이트박스 */
 document.addEventListener('click',e=>{
   const img=e.target.closest('.card-img');
   if(img){
@@ -829,7 +847,6 @@ $('searchInput').addEventListener('input',e=>{
   if(searchQ)loadAll();
 });
 
-/* 초기화 */
 (async()=>{
   updateAdminUI();
   [imgData,specData]=await Promise.all([loadJsonFile(GH_IMG_PATH),loadJsonFile(GH_SPEC_PATH)]);
