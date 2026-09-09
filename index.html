@@ -9,7 +9,7 @@
       localStorage.getItem('master_theme') === 'dark' ? 'dark' : 'light');
   } catch(e) {}
 </script>
-<title>마스터 상품 카탈로그</title>
+<title>(주)마스터 상품 카탈로그</title>
 <style>
 :root {
   --bg:#f5f6f8;--bg2:#eef0f4;--panel:#ffffff;--panel2:#f8f9fb;
@@ -43,48 +43,22 @@ button{font-family:inherit;cursor:pointer;}
 a{color:inherit;text-decoration:none;}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-.admin-bar{
-  display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
-  background:#f59e0b;color:#1a1000;font-size:12.5px;font-weight:700;
-  padding:9px 16px;text-align:center;
-}
+.admin-bar{display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#f59e0b;color:#1a1000;font-size:12.5px;font-weight:700;padding:9px 16px;text-align:center;}
 .admin-bar.on{display:flex;}
-.admin-bar button{
-  border:1.5px solid #1a1000;background:transparent;color:#1a1000;
-  border-radius:7px;padding:4px 12px;font-size:11.5px;font-weight:800;
-}
+.admin-bar button{border:1.5px solid #1a1000;background:transparent;color:#1a1000;border-radius:7px;padding:4px 12px;font-size:11.5px;font-weight:800;}
 .admin-bar button:hover{background:#1a1000;color:#f59e0b;}
 
-.theme-toggle{
-  position:fixed;top:14px;right:16px;z-index:200;
-  width:38px;height:38px;border-radius:50%;
-  border:1px solid var(--border2);background:var(--panel);color:var(--ink);
-  font-size:17px;display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--shadow);transition:border-color .15s,background .2s;
-}
+.theme-toggle{position:fixed;top:14px;right:16px;z-index:200;width:38px;height:38px;border-radius:50%;border:1px solid var(--border2);background:var(--panel);color:var(--ink);font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);transition:border-color .15s,background .2s;}
 .theme-toggle:hover{border-color:var(--accent);}
 
-.site-header{
-  background:var(--panel);border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:50;
-  box-shadow:0 1px 8px rgba(0,0,0,.06);
-  transition:background .2s,border-color .2s;
-}
-.header-inner{
-  max-width:1440px;margin:0 auto;padding:0 28px;
-  height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
-}
+.site-header{background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.06);transition:background .2s,border-color .2s;}
+.header-inner{max-width:1440px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .logo{display:flex;align-items:center;gap:10px;flex:none;}
 .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(27,107,105,.18);}
 .logo-name{font-size:17px;font-weight:800;letter-spacing:-.3px;}
 .logo-sub{font-size:11px;color:var(--ink3);margin-top:1px;}
 .header-search{flex:1;max-width:400px;position:relative;}
-.header-search input{
-  width:100%;height:40px;border:1.5px solid var(--border2);
-  border-radius:20px;padding:0 16px 0 40px;font-size:14px;font-family:inherit;
-  background:var(--bg);color:var(--ink);outline:none;
-  transition:border-color .15s,background .2s;
-}
+.header-search input{width:100%;height:40px;border:1.5px solid var(--border2);border-radius:20px;padding:0 16px 0 40px;font-size:14px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s,background .2s;}
 .header-search input:focus{border-color:var(--accent);background:var(--panel);}
 .header-search input::placeholder{color:var(--ink3);}
 .search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none;font-size:15px;}
@@ -101,21 +75,10 @@ a{color:inherit;text-decoration:none;}
 .hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;}
 .hero-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.85;min-width:260px;max-width:320px;flex:none;word-break:keep-all;}
 .hero-box b{font-weight:700;}
-.hero-kakao{
-  display:inline-flex;align-items:center;gap:7px;
-  background:#FEE500;color:#1a1408;border-radius:8px;
-  padding:8px 15px;font-size:13px;font-weight:800;margin-top:12px;
-  white-space:nowrap;cursor:pointer;border:none;
-  transition:opacity .15s;width:100%;justify-content:center;
-}
+.hero-kakao{display:inline-flex;align-items:center;gap:7px;background:#FEE500;color:#1a1408;border-radius:8px;padding:8px 15px;font-size:13px;font-weight:800;margin-top:12px;white-space:nowrap;cursor:pointer;border:none;transition:opacity .15s;width:100%;justify-content:center;}
 .hero-kakao:hover{opacity:.82;}
-.hero-phone{
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-  border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;
-  margin-top:8px;color:#fff;width:100%;
-}
-.hero-phone a{color:#fff;font-weight:800;text-decoration:none;}
+.hero-phone{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;margin-top:8px;color:#fff;width:100%;}
+.hero-phone a{color:#fff;font-weight:800;}
 .hero-phone a:hover{text-decoration:underline;}
 
 .tab-bar{background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40;transition:background .2s,border-color .2s;}
@@ -141,7 +104,6 @@ a{color:inherit;text-decoration:none;}
 .sort-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
 
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
-
 .pcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,background .2s,border-color .2s;position:relative;}
 .pcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
 .card-img-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--bg2);flex:none;}
@@ -153,21 +115,10 @@ a{color:inherit;text-decoration:none;}
 .card-copy{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:7px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.38);backdrop-filter:blur(4px);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:.15s;}
 .pcard:hover .card-copy{opacity:1;}
 .card-copy:hover{background:rgba(27,107,105,.75);border-color:transparent;}
-.img-edit-btn{
-  position:absolute;bottom:8px;right:8px;
-  border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);
-  backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;
-  border-radius:7px;padding:5px 10px;display:none;transition:.15s;
-}
+.img-edit-btn{position:absolute;bottom:8px;right:8px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;display:none;transition:.15s;}
 .img-edit-btn:hover{background:rgba(232,135,58,.85);border-color:transparent;}
 body.admin-on .img-edit-btn{display:block;}
-
-.spec-edit-btn{
-  display:none;width:100%;margin-top:4px;
-  border:1.5px dashed var(--border2);background:transparent;
-  color:var(--ink3);font-size:11.5px;font-weight:700;
-  border-radius:7px;padding:5px 10px;transition:.15s;
-}
+.spec-edit-btn{display:none;width:100%;margin-top:4px;border:1.5px dashed var(--border2);background:transparent;color:var(--ink3);font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;transition:.15s;}
 .spec-edit-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l);}
 body.admin-on .spec-edit-btn{display:block;}
 
@@ -175,7 +126,6 @@ body.admin-on .spec-edit-btn{display:block;}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .ctag{font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 7px;}
 .ctag-wh{background:var(--accent-l);color:var(--accent);}
-.ctag-daily{background:rgba(232,92,58,.1);color:var(--daily);}
 .ctag-tax{background:var(--bg2);color:var(--ink3);}
 .ctag-free{background:rgba(18,160,92,.11);color:var(--free);}
 .card-name{font-size:14.5px;font-weight:700;letter-spacing:-.2px;line-height:1.45;color:var(--ink);}
@@ -206,13 +156,7 @@ body.admin-on .spec-edit-btn{display:block;}
 .retry-btn{margin-top:14px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink2);border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;}
 .retry-btn:hover{border-color:var(--accent);color:var(--accent);}
 
-.inquiry-fab{
-  position:fixed;bottom:24px;right:24px;z-index:90;
-  background:#FEE500;color:#1a1408;border:none;border-radius:30px;
-  padding:16px 26px;display:inline-flex;align-items:center;gap:13px;
-  box-shadow:0 8px 30px rgba(0,0,0,.2);
-  transition:transform .15s,box-shadow .15s;cursor:pointer;
-}
+.inquiry-fab{position:fixed;bottom:24px;right:24px;z-index:90;background:#FEE500;color:#1a1408;border:none;border-radius:30px;padding:16px 26px;display:inline-flex;align-items:center;gap:13px;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:transform .15s,box-shadow .15s;cursor:pointer;}
 .inquiry-fab:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.26);}
 .fab-emoji{font-size:28px;line-height:1;}
 .fab-text{display:flex;flex-direction:column;gap:1px;}
@@ -366,40 +310,47 @@ const ADMIN_PIN   = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
 /* ---------------------------------------------------------------
-   창고(시트) 목록
-   name = 구글시트 탭 이름과 정확히 일치
-   label = 탭바에 표시할 이름
+   창고 목록
+   gid = 구글시트 각 탭의 고유 ID (URL의 #gid=숫자)
+   daily = true 이면 탭에 빨간 점 표시
+   마진 탭은 gid 없음 → 빈 탭으로 처리
 --------------------------------------------------------------- */
 const SHEETS = [
-  {name:'당일생물',  label:'당일생물', daily:true},
-  {name:'동해',     label:'동해'},
-  {name:'인천',     label:'인천'},
-  {name:'군산',     label:'군산'},
-  {name:'충무',     label:'충무'},
-  {name:'경기',     label:'경기'},
-  {name:'생고',     label:'생고'},
-  {name:'키트',     label:'키트'},
-  {name:'북구',     label:'북구'},
-  {name:'김포',     label:'김포'},
-  {name:'떡',       label:'떡'},
-  {name:'팡팡',     label:'팡팡'},
-  {name:'부산',     label:'부산'},
-  {name:'찐한국',   label:'찐한국'},
-  {name:'단독(유)', label:'단독(유배)'},
-  {name:'단독(무)', label:'단독(무배)'},
-  {name:'단독(선물)',label:'단독(선물)'},
-  {name:'마진',     label:'마진'},
+  {name:'당일생물',  label:'당일생물', gid:'322594718',  daily:true},
+  {name:'동해',     label:'동해',     gid:'698072486'},
+  {name:'인천',     label:'인천',     gid:'448241740'},
+  {name:'군산',     label:'군산',     gid:'1105429635'},
+  {name:'충무',     label:'충무',     gid:'1348694541'},
+  {name:'경기',     label:'경기',     gid:'1727608784'},
+  {name:'생고',     label:'생고',     gid:'1605891700'},
+  {name:'키트',     label:'키트',     gid:'1258963443'},
+  {name:'북구',     label:'북구',     gid:'142458129'},
+  {name:'김포',     label:'김포',     gid:'1297549773'},
+  {name:'떡',       label:'떡',       gid:'121792941'},
+  {name:'팡팡',     label:'팡팡',     gid:'1834137489'},
+  {name:'부산',     label:'부산',     gid:'691416386'},
+  {name:'찐한국',   label:'찐한국',   gid:'1620505045'},
+  {name:'단독(유)', label:'단독(유배)',gid:'1786413552'},
+  {name:'단독(무)', label:'단독(무배)',gid:'183236314'},
+  {name:'단독(선물)',label:'단독(선물)',gid:'1003860228'},
+  {name:'마진',     label:'마진',     gid:''},           // 미개설 — 빈 탭
+];
+
+/* 품절 섹션 구분 키워드 — 이 텍스트가 상품명/창고명 위치에 나오면 이후 행 전부 스킵 */
+const SOLD_OUT_MARKERS = [
+  '품절 상품','일시 품절 상품','품절상품','일시품절상품',
+  '품절 됩니다','sold out','품절'
 ];
 
 const CAT_EMOJI={수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
 const CAT_RE=[
-  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막/],
-  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창/],
+  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막|가리비|능성어|피문어/],
+  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창|항정|삼겹|보쌈|학센|곱내장|염통/],
   ['과일',/사과|복숭아|포도|한라봉|딸기|수박|참외|멜론|망고|바나나|블루베리|자두|체리|키위|단감|홍시|레몬|오렌지|천도|자몽/],
   ['채소',/감자|양파|마늘|대파|버섯|고구마|케일|옥수수|호박|배추|무|상추/],
-  ['김치',/김치|깍두기|총각|열무|동치미|절임|된장|고추장|명이|장아찌/],
+  ['김치',/김치|깍두기|총각|열무|동치미|절임|된장|고추장|명이|장아찌|파김치|갓김치/],
   ['떡',/떡|찹쌀|송편|인절미/],
-  ['간식',/엿|강정|냉면|소스|참기름|견과|밤|누룽지|짬뽕|부대찌개|국밥/],
+  ['간식',/엿|강정|냉면|소스|참기름|견과|밤|누룽지|짬뽕|부대찌개|국밥|수제비|칼국수|짜장/],
 ];
 function catOf(n){for(const[c,r]of CAT_RE)if(r.test(n))return c;return'기타';}
 
@@ -416,7 +367,7 @@ let activeTab=null,searchQ='',sortMode='sheet';
 let loaded=new Set(),loading=new Set(),lastHash={};
 
 const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?'':s).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"');
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>').replace(/"/g,'"');
 const pkey=s=>String(s||'').replace(/\s+/g,'').toLowerCase();
 
 function showToast(msg){
@@ -490,7 +441,7 @@ async function getToken(){
   }
   return t;
 }
-function ghHdr(token){return{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
+function ghHdr(t){return{'Authorization':'Bearer '+t,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
 async function getFileSha(api,h){const r=await fetch(api+'?ref=main',{headers:h});if(r.ok){const j=await r.json();return j.sha;}return null;}
 async function ghPut(api,h,msg,content,sha){const b={message:msg,content,branch:'main'};if(sha)b.sha=sha;return fetch(api,{method:'PUT',headers:h,body:JSON.stringify(b)});}
 async function commitJson(path,data,msg){
@@ -505,7 +456,7 @@ async function commitJson(path,data,msg){
     if(res.status===401||res.status===403){localStorage.removeItem(GH_PAT_KEY);showToast('토큰이 유효하지 않아요 — 다시 입력해주세요');}
     else{const j=await res.json().catch(()=>({}));showToast(`저장 실패 (${res.status}) ${j.message||''}`);}
     return false;
-  }catch(e){showToast('저장 실패 — 네트워크를 확인해주세요');console.error(e);return false;}
+  }catch(e){showToast('저장 실패 — 네트워크를 확인해주세요');return false;}
 }
 
 function editImage(productName){
@@ -518,9 +469,7 @@ function editImage(productName){
     const trimmed=newUrl.trim();
     if(trimmed)imgData[key]=trimmed;else delete imgData[key];
     render();showToast('저장 중… ⏳');
-    commitJson(GH_IMG_PATH,imgData,`관리자: "${productName}" 이미지 등록`).then(ok=>{
-      if(ok){render();showToast('이미지가 저장됐어요 ✅');}
-    });
+    commitJson(GH_IMG_PATH,imgData,`관리자: "${productName}" 이미지 등록`).then(ok=>{if(ok){render();showToast('이미지가 저장됐어요 ✅');}});
   }else{
     const input=document.createElement('input');
     input.type='file';input.accept='image/*';
@@ -584,76 +533,70 @@ function parseCSV(text){
   return rows;
 }
 
+/* 품절 구분행 여부 판단
+   - 창고명(1열)이 비어있고 상품명(2열)에 품절 키워드가 있는 경우
+   - 또는 0열에 품절 키워드가 있는 경우 */
+function isSoldOutMarker(row){
+  const joined = row.slice(0,3).join(' ').replace(/\s/g,'').toLowerCase();
+  return SOLD_OUT_MARKERS.some(k => joined.includes(k.replace(/\s/g,'').toLowerCase()));
+}
+
 /* ---------------------------------------------------------------
-   구글 스프레드시트 파싱
-   시트 구조: 0=유통기한, 1=창고명, 2=상품명, 3=공급가,
-              4=택배사, 5=택배비, 6=면과세, 7=발주마감시간, 8=특이사항
-   헤더 탐지: '창고명' 또는 '상품명' 포함 행 → 그 행이 헤더
+   구글 스프레드시트 파싱 — gid 기반으로 정확한 탭 요청
+   컬럼 구조: 0=유통기한, 1=창고명, 2=상품명, 3=공급가,
+              4=택배사, 5=택배비, 6=면과세, 7=발주마감, 8=비고/수량
 --------------------------------------------------------------- */
-async function fetchSheet(name){
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}&t=${Date.now()}`;
+async function fetchSheet(gid){
+  /* gid가 없으면 빈 배열 반환 (마진 탭 등 미개설) */
+  if(!gid) return [];
+
+  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&t=${Date.now()}`;
   const res=await fetch(url,{cache:'no-cache'});
   if(!res.ok)throw new Error(`HTTP ${res.status}`);
   const rows=parseCSV(await res.text());
 
-  /* 헤더 행 찾기: '창고명' 또는 '상품명'이 들어있는 첫 번째 행 */
+  /* 헤더 행 찾기: '창고명' 또는 '상품명' 포함 행 */
   let hi=-1;
   for(let i=0;i<Math.min(rows.length,6);i++){
     if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){
       hi=i;break;
     }
   }
-  /* 헤더를 못 찾은 경우 첫 번째 행을 헤더로 가정 */
   if(hi<0)hi=0;
-
-  const hdr=rows[hi].map(c=>c.replace(/\s/g,''));
-  const ci={
-    exp:  hdr.findIndex(c=>c.includes('유통기한')||c.includes('합배송')),   // 0열 (유통기한 or 설명)
-    wh:   hdr.findIndex(c=>c.includes('창고명')),
-    name: hdr.findIndex(c=>c.includes('상품명')),
-    ship: hdr.findIndex(c=>c.includes('택배비')),
-    tax:  hdr.findIndex(c=>c.includes('면과세')),
-    note: hdr.findIndex(c=>c.includes('발주마감시간')||c.includes('특이사항')||c.includes('마지막')),
-  };
-
-  /* fallback: 헤더 탐지 실패 시 이 시트의 고정 컬럼 위치 사용 */
-  if(ci.wh<0) ci.wh=1;
-  if(ci.name<0)ci.name=2;
-  if(ci.ship<0)ci.ship=5;
-  if(ci.tax<0) ci.tax=6;
 
   const products=[];
   for(let i=hi+1;i<rows.length;i++){
     const r=rows[i];
     if(!r||r.length<3)continue;
 
-    /* 섹션 구분행 스킵: 상품명 열이 비어있거나 안내문구인 경우 */
-    const nm=(r[ci.name]||'').replace(/\s+/g,' ').trim();
-    if(!nm||nm.length<2)continue;
-    /* 헤더 반복 행 스킵 */
-    if(nm.includes('상품명'))continue;
-    /* 섹션 타이틀 행 스킵 (창고명 열이 비어있고 상품명이 안내문구인 경우) */
-    const whCell=(r[ci.wh]||'').trim();
-    if(!whCell&&nm.length>20)continue;
+    /* ★ 품절 구분행 만나면 이후 전부 스킵 */
+    if(isSoldOutMarker(r))break;
 
-    const shipRaw=(ci.ship>=0&&r[ci.ship]?r[ci.ship]:'').trim();
+    const nm=(r[2]||'').replace(/\s+/g,' ').trim();
+    /* 빈 상품명, 너무 짧은 것, 헤더 반복 스킵 */
+    if(!nm||nm.length<2||nm.includes('상품명'))continue;
+
+    const whCell=(r[1]||'').trim();
+    /* 창고명이 비어있고 상품명이 긴 안내문구인 경우 스킵 */
+    if(!whCell&&nm.length>30)continue;
+
+    const shipRaw=(r[5]||'').trim();
     const isFree=/무료/.test(shipRaw)||shipRaw==='0';
     const ship=isFree?0:(parseInt(shipRaw.replace(/[^\d]/g,''),10)||0);
-    const tax=(ci.tax>=0&&r[ci.tax]?r[ci.tax]:'').trim();
-
-    /* 발주마감 + 특이사항(9번 열) 결합 */
+    const tax=(r[6]||'').trim();
     const deadline=(r[7]||'').trim();
     const extra=(r[8]||'').trim();
+
     const specParts=[];
     if(deadline&&deadline!=='-')specParts.push(deadline);
-    if(extra&&extra!=='-'&&extra!=='품절 상품'&&extra!=='상시상품 추천'&&extra!=='일시 품절 상품')specParts.push(extra);
+    if(extra&&extra!=='-')specParts.push(extra);
 
     products.push({
-      wh:whCell||'기타',
-      name:nm,
-      isFree,ship,tax,
-      spec:specParts.join(' · '),
-      cat:catOf(nm)
+      wh: whCell||'기타',
+      name: nm,
+      isFree, ship, tax,
+      spec: specParts.join(' · '),
+      cat: catOf(nm)
     });
   }
   return products;
@@ -661,6 +604,7 @@ async function fetchSheet(name){
 
 function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
 
+/* 탭 */
 function buildTabs(){
   const inner=$('tabInner');inner.innerHTML='';
   SHEETS.forEach(s=>{
@@ -682,7 +626,8 @@ async function switchTab(name){
   if(!loaded.has(name)&&!loading.has(name)){
     loading.add(name);
     try{
-      const data=await fetchSheet(name);
+      const sheet=SHEETS.find(s=>s.name===name);
+      const data=await fetchSheet(sheet?sheet.gid:'');
       allData[name]=data;lastHash[name]=hashList(data);
       loaded.add(name);updBadge(name);updateStats();
       if(activeTab===name)render();
@@ -731,9 +676,11 @@ function render(){
   }
   html+='<div class="card-grid">';
   if(!sl.length){
-    html+=loading.has(activeTab)
-      ?`<div class="state-box"><div class="spinner"></div><div class="state-title">불러오는 중…</div></div>`
-      :`<div class="state-box"><div class="state-ico">${searchQ?'🔍':'📦'}</div><div class="state-title">${searchQ?`"${esc(searchQ)}"에 해당하는 상품이 없어요`:'상품이 없습니다'}</div></div>`;
+    /* 마진처럼 gid 없는 탭 or 진짜 빈 탭 */
+    const isEmpty=!loading.has(activeTab);
+    html+=isEmpty
+      ?`<div class="state-box"><div class="state-ico">📦</div><div class="state-title">${searchQ?`"${esc(searchQ)}"에 해당하는 상품이 없어요`:'등록된 상품이 없습니다'}</div></div>`
+      :`<div class="state-box"><div class="spinner"></div><div class="state-title">불러오는 중…</div></div>`;
   }
   sl.forEach(p=>{html+=cardHtml(p);});
   html+='</div>';
@@ -785,16 +732,16 @@ function renderError(name,err){
 function updateStats(){
   let t=0;Object.values(allData).forEach(a=>t+=a.length);
   $('statItems').textContent=t.toLocaleString();
-  $('statSheets').textContent=loaded.size;
+  $('statSheets').textContent=SHEETS.filter(s=>s.gid).length;
 }
 
 async function refreshAll(){
   if(document.hidden)return;
   let changed=false;
   for(const s of SHEETS){
-    if(!loaded.has(s.name))continue;
+    if(!loaded.has(s.name)||!s.gid)continue;
     try{
-      const fresh=await fetchSheet(s.name);
+      const fresh=await fetchSheet(s.gid);
       const h=hashList(fresh);
       if(h!==lastHash[s.name]){allData[s.name]=fresh;lastHash[s.name]=h;updBadge(s.name);changed=true;}
     }catch(e){}
@@ -813,7 +760,7 @@ async function loadAll(){
     if(loaded.has(s.name)||loading.has(s.name))continue;
     loading.add(s.name);
     try{
-      const data=await fetchSheet(s.name);
+      const data=await fetchSheet(s.gid);
       allData[s.name]=data;lastHash[s.name]=hashList(data);
       loaded.add(s.name);updBadge(s.name);updateStats();
       if(searchQ)render();
@@ -858,7 +805,8 @@ $('searchInput').addEventListener('input',e=>{
   buildTabs();loading.add(activeTab);render();
 
   try{
-    const data=await fetchSheet(activeTab);
+    const sheet=SHEETS.find(s=>s.name===activeTab);
+    const data=await fetchSheet(sheet?sheet.gid:'');
     allData[activeTab]=data;lastHash[activeTab]=hashList(data);
     loaded.add(activeTab);updBadge(activeTab);updateStats();
   }catch(e){renderError(activeTab,e);}
