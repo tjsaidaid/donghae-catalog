@@ -66,19 +66,27 @@ a{color:inherit;text-decoration:none;}
 .hstat .v{font-size:20px;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
 .hstat .k{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;}
 
-.hero{background:linear-gradient(135deg,#0E2233 0%,#1B6B69 100%);color:#fff;padding:36px 28px 32px;}
-[data-theme="dark"] .hero{background:linear-gradient(135deg,#091520 0%,#0f3b3a 100%);}
+/* ★ Hero 그라데이션 — 파스텔 블루/라벤더/핑크 */
+.hero{background:linear-gradient(135deg,#b8cef5 0%,#c9b8f0 50%,#f0b8d4 100%);color:#2a2060;padding:36px 28px 32px;}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#1a2540 0%,#2a1a40 50%,#401a2a 100%);}
+[data-theme="dark"] .hero{color:#e8ecf4;}
 .hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.hero-text h1{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.35;}
-.hero-text p{font-size:14px;opacity:.88;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;}
+.hero-text h1{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:#1a1060;}
+[data-theme="dark"] .hero-text h1{color:#e8ecf4;}
+.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;color:#3a3070;opacity:1;}
+[data-theme="dark"] .hero-text p{color:#a0abbe;}
 .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
-.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;}
-.hero-box{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.85;min-width:260px;max-width:320px;flex:none;word-break:keep-all;}
+.hero-badge{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.25);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:#3a2080;}
+[data-theme="dark"] .hero-badge{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#c8b8f0;}
+.hero-box{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.2);border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.85;min-width:260px;max-width:320px;flex:none;word-break:keep-all;color:#2a2060;}
+[data-theme="dark"] .hero-box{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#e8ecf4;}
 .hero-box b{font-weight:700;}
 .hero-kakao{display:inline-flex;align-items:center;gap:7px;background:#FEE500;color:#1a1408;border-radius:8px;padding:8px 15px;font-size:13px;font-weight:800;margin-top:12px;white-space:nowrap;cursor:pointer;border:none;transition:opacity .15s;width:100%;justify-content:center;}
 .hero-kakao:hover{opacity:.82;}
-.hero-phone{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;margin-top:8px;color:#fff;width:100%;}
-.hero-phone a{color:#fff;font-weight:800;}
+.hero-phone{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.4);border:1px solid rgba(100,80,200,.2);border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;margin-top:8px;color:#2a2060;width:100%;}
+[data-theme="dark"] .hero-phone{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#e8ecf4;}
+.hero-phone a{color:#1B6B69;font-weight:800;}
+[data-theme="dark"] .hero-phone a{color:#3fa39f;}
 .hero-phone a:hover{text-decoration:underline;}
 
 .tab-bar{background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40;transition:background .2s,border-color .2s;}
@@ -110,12 +118,13 @@ a{color:inherit;text-decoration:none;}
 .card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .22s,filter .2s;cursor:zoom-in;}
 .pcard:hover .card-img{transform:scale(1.05);}
 .card-img.loading{filter:blur(8px) brightness(.9);}
-.card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;}
+/* ★ 이미지 없는 카드도 position:relative 유지 */
+.card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
 .card-wh-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.52);backdrop-filter:blur(4px);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:3px 8px;pointer-events:none;}
 .card-copy{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:7px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.38);backdrop-filter:blur(4px);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:.15s;}
 .pcard:hover .card-copy{opacity:1;}
 .card-copy:hover{background:rgba(27,107,105,.75);border-color:transparent;}
-.img-edit-btn{position:absolute;bottom:8px;right:8px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;display:none;transition:.15s;}
+.img-edit-btn{position:absolute;bottom:8px;right:8px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;display:none;transition:.15s;cursor:pointer;}
 .img-edit-btn:hover{background:rgba(232,135,58,.85);border-color:transparent;}
 body.admin-on .img-edit-btn{display:block;}
 .spec-edit-btn{display:none;width:100%;margin-top:4px;border:1.5px dashed var(--border2);background:transparent;color:var(--ink3);font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;transition:.15s;}
@@ -309,12 +318,6 @@ const KAKAO_URL   = 'https://open.kakao.com/o/sXPirMMi';
 const ADMIN_PIN   = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
-/* ---------------------------------------------------------------
-   창고 목록
-   gid = 구글시트 각 탭의 고유 ID (URL의 #gid=숫자)
-   daily = true 이면 탭에 빨간 점 표시
-   마진 탭은 gid 없음 → 빈 탭으로 처리
---------------------------------------------------------------- */
 const SHEETS = [
   {name:'당일생물',  label:'당일생물', gid:'322594718',  daily:true},
   {name:'동해',     label:'동해',     gid:'698072486'},
@@ -333,19 +336,17 @@ const SHEETS = [
   {name:'단독(유)', label:'단독(유배)',gid:'1786413552'},
   {name:'단독(무)', label:'단독(무배)',gid:'183236314'},
   {name:'단독(선물)',label:'단독(선물)',gid:'1003860228'},
-  {name:'마진',     label:'마진',     gid:''},           // 미개설 — 빈 탭
+  {name:'마진',     label:'마진',     gid:''},
 ];
 
-/* 품절 섹션 구분 키워드 — 이 텍스트가 상품명/창고명 위치에 나오면 이후 행 전부 스킵 */
 const SOLD_OUT_MARKERS = [
-  '품절 상품','일시 품절 상품','품절상품','일시품절상품',
-  '품절 됩니다','sold out','품절'
+  '품절 상품','일시 품절 상품','품절상품','일시품절상품','품절 됩니다','sold out','품절'
 ];
 
 const CAT_EMOJI={수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
 const CAT_RE=[
   ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막|가리비|능성어|피문어/],
-  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창|항정|삼겹|보쌈|학센|곱내장|염통/],
+  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창|항정|보쌈|학센|곱내장|염통/],
   ['과일',/사과|복숭아|포도|한라봉|딸기|수박|참외|멜론|망고|바나나|블루베리|자두|체리|키위|단감|홍시|레몬|오렌지|천도|자몽/],
   ['채소',/감자|양파|마늘|대파|버섯|고구마|케일|옥수수|호박|배추|무|상추/],
   ['김치',/김치|깍두기|총각|열무|동치미|절임|된장|고추장|명이|장아찌|파김치|갓김치/],
@@ -442,15 +443,31 @@ async function getToken(){
   return t;
 }
 function ghHdr(t){return{'Authorization':'Bearer '+t,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
-async function getFileSha(api,h){const r=await fetch(api+'?ref=main',{headers:h});if(r.ok){const j=await r.json();return j.sha;}return null;}
-async function ghPut(api,h,msg,content,sha){const b={message:msg,content,branch:'main'};if(sha)b.sha=sha;return fetch(api,{method:'PUT',headers:h,body:JSON.stringify(b)});}
+
+function b64encode(str){
+  const bytes=new TextEncoder().encode(str);
+  let binary='';
+  bytes.forEach(b=>binary+=String.fromCharCode(b));
+  return btoa(binary);
+}
+
+async function getFileSha(api,h){
+  const r=await fetch(api+'?ref=main',{headers:h});
+  if(r.ok){const j=await r.json();return j.sha;}
+  return null;
+}
+async function ghPut(api,h,msg,content,sha){
+  const b={message:msg,content,branch:'main'};
+  if(sha)b.sha=sha;
+  return fetch(api,{method:'PUT',headers:h,body:JSON.stringify(b)});
+}
 async function commitJson(path,data,msg){
   const token=await getToken();if(!token)return false;
   const h=ghHdr(token);
   const api=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
   try{
     const sha=await getFileSha(api,h);
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2))));
+    const content=b64encode(JSON.stringify(data,null,2));
     const res=await ghPut(api,h,msg,content,sha);
     if(res.ok)return true;
     if(res.status===401||res.status===403){localStorage.removeItem(GH_PAT_KEY);showToast('토큰이 유효하지 않아요 — 다시 입력해주세요');}
@@ -516,7 +533,6 @@ function thumbUrl(url){
   return'https://images.weserv.nl/?url='+encodeURIComponent(url.replace(/^https?:\/\//,''))+'&w=480&h=360&fit=cover&output=webp&q=82';
 }
 
-/* CSV 파서 */
 function parseCSV(text){
   const rows=[];let row=[],cell='',inQ=false;
   for(let i=0;i<text.length;i++){
@@ -533,78 +549,47 @@ function parseCSV(text){
   return rows;
 }
 
-/* 품절 구분행 여부 판단
-   - 창고명(1열)이 비어있고 상품명(2열)에 품절 키워드가 있는 경우
-   - 또는 0열에 품절 키워드가 있는 경우 */
 function isSoldOutMarker(row){
-  const joined = row.slice(0,3).join(' ').replace(/\s/g,'').toLowerCase();
-  return SOLD_OUT_MARKERS.some(k => joined.includes(k.replace(/\s/g,'').toLowerCase()));
+  const joined=row.slice(0,3).join(' ').replace(/\s/g,'').toLowerCase();
+  return SOLD_OUT_MARKERS.some(k=>joined.includes(k.replace(/\s/g,'').toLowerCase()));
 }
 
-/* ---------------------------------------------------------------
-   구글 스프레드시트 파싱 — gid 기반으로 정확한 탭 요청
-   컬럼 구조: 0=유통기한, 1=창고명, 2=상품명, 3=공급가,
-              4=택배사, 5=택배비, 6=면과세, 7=발주마감, 8=비고/수량
---------------------------------------------------------------- */
 async function fetchSheet(gid){
-  /* gid가 없으면 빈 배열 반환 (마진 탭 등 미개설) */
-  if(!gid) return [];
-
+  if(!gid)return[];
   const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&t=${Date.now()}`;
   const res=await fetch(url,{cache:'no-cache'});
   if(!res.ok)throw new Error(`HTTP ${res.status}`);
   const rows=parseCSV(await res.text());
-
-  /* 헤더 행 찾기: '창고명' 또는 '상품명' 포함 행 */
   let hi=-1;
   for(let i=0;i<Math.min(rows.length,6);i++){
-    if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){
-      hi=i;break;
-    }
+    if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){hi=i;break;}
   }
   if(hi<0)hi=0;
-
   const products=[];
   for(let i=hi+1;i<rows.length;i++){
     const r=rows[i];
     if(!r||r.length<3)continue;
-
-    /* ★ 품절 구분행 만나면 이후 전부 스킵 */
     if(isSoldOutMarker(r))break;
-
     const nm=(r[2]||'').replace(/\s+/g,' ').trim();
-    /* 빈 상품명, 너무 짧은 것, 헤더 반복 스킵 */
     if(!nm||nm.length<2||nm.includes('상품명'))continue;
-
     const whCell=(r[1]||'').trim();
-    /* 창고명이 비어있고 상품명이 긴 안내문구인 경우 스킵 */
     if(!whCell&&nm.length>30)continue;
-
     const shipRaw=(r[5]||'').trim();
     const isFree=/무료/.test(shipRaw)||shipRaw==='0';
     const ship=isFree?0:(parseInt(shipRaw.replace(/[^\d]/g,''),10)||0);
     const tax=(r[6]||'').trim();
     const deadline=(r[7]||'').trim();
     const extra=(r[8]||'').trim();
-
     const specParts=[];
     if(deadline&&deadline!=='-')specParts.push(deadline);
     if(extra&&extra!=='-')specParts.push(extra);
-
-    products.push({
-      wh: whCell||'기타',
-      name: nm,
-      isFree, ship, tax,
-      spec: specParts.join(' · '),
-      cat: catOf(nm)
-    });
+    products.push({wh:whCell||'기타',name:nm,isFree,ship,tax,spec:specParts.join(' · '),cat:catOf(nm)});
   }
   return products;
 }
 
 function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
 
-/* 탭 */
 function buildTabs(){
   const inner=$('tabInner');inner.innerHTML='';
   SHEETS.forEach(s=>{
@@ -676,7 +661,6 @@ function render(){
   }
   html+='<div class="card-grid">';
   if(!sl.length){
-    /* 마진처럼 gid 없는 탭 or 진짜 빈 탭 */
     const isEmpty=!loading.has(activeTab);
     html+=isEmpty
       ?`<div class="state-box"><div class="state-ico">📦</div><div class="state-title">${searchQ?`"${esc(searchQ)}"에 해당하는 상품이 없어요`:'등록된 상품이 없습니다'}</div></div>`
@@ -692,10 +676,13 @@ function cardHtml(p){
   const emoji=CAT_EMOJI[p.cat||catOf(p.name)]||'📦';
   const savedImg=imgData[pkey(p.name)]||'';
   const thumb=thumbUrl(savedImg);
+  const safe=p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+
+  /* ★ 이미지 없는 카드에도 ✎ 이미지 버튼 표시 */
   let imgHtml=thumb
     ?`<img class="card-img loading" src="${esc(thumb)}" data-full="${esc(savedImg)}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.remove('loading')" onerror="this.outerHTML='<div class=\\'card-no-img\\'>${emoji}</div>'">`
     :`<div class="card-no-img" style="${gradStyle(p.name)}">${emoji}</div>`;
-  const safe=p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+
   const tags=[];
   if(searchQ&&label)tags.push(`<span class="ctag ctag-wh">${esc(label)}</span>`);
   else if(p.wh)tags.push(`<span class="ctag ctag-wh">${esc(p.wh)}</span>`);
@@ -797,13 +784,10 @@ $('searchInput').addEventListener('input',e=>{
 (async()=>{
   updateAdminUI();
   [imgData,specData]=await Promise.all([loadJsonFile(GH_IMG_PATH),loadJsonFile(GH_SPEC_PATH)]);
-
   const urlTab=new URLSearchParams(location.search).get('tab');
   const savedTab=localStorage.getItem('master_tab');
   activeTab=urlTab||savedTab||SHEETS[0].name;
-
   buildTabs();loading.add(activeTab);render();
-
   try{
     const sheet=SHEETS.find(s=>s.name===activeTab);
     const data=await fetchSheet(sheet?sheet.gid:'');
@@ -811,7 +795,6 @@ $('searchInput').addEventListener('input',e=>{
     loaded.add(activeTab);updBadge(activeTab);updateStats();
   }catch(e){renderError(activeTab,e);}
   finally{loading.delete(activeTab);}
-
   render();buildTabs();
   loadAll();
 })();
