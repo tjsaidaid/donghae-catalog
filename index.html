@@ -1,189 +1,803 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>(주)마스터 — 상품 카탈로그</title>
-  <meta name="description" content="(주)마스터 B2B 상품 카탈로그 — 전국 산지 수산·농축산물 전문 유통.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  try {
+    document.documentElement.setAttribute('data-theme',
+      localStorage.getItem('master_theme') === 'dark' ? 'dark' : 'light');
+  } catch(e) {}
+</script>
+<title>(주)마스터 상품 카탈로그</title>
+<style>
+:root {
+  --bg:#f5f6f8;--bg2:#eef0f4;--panel:#ffffff;--panel2:#f8f9fb;
+  --border:#e2e5ea;--border2:#d0d4db;
+  --ink:#1a1d23;--ink2:#4a5060;--ink3:#8a9099;
+  --accent:#1B6B69;--accent-l:#e4f0ef;
+  --sunrise:#E8873A;--sunrise-l:#fbe7d3;--sunrise-dark:#B96B26;
+  --free:#12a05c;--daily:#e85c3a;
+  --shadow:0 2px 12px rgba(0,0,0,.07);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.10);
+  --radius:14px;
+}
+[data-theme="dark"] {
+  --bg:#10131a;--bg2:#161b24;--panel:#1c2130;--panel2:#222a3a;
+  --border:#2a3347;--border2:#334060;
+  --ink:#e8ecf4;--ink2:#a0abbe;--ink3:#5a6880;
+  --accent:#3fa39f;--accent-l:#16302e;
+  --sunrise:#f0a05e;--sunrise-l:#3a2a18;--sunrise-dark:#f0a05e;
+  --free:#27c47a;--daily:#f07050;
+  --shadow:0 2px 16px rgba(0,0,0,.35);
+  --shadow-lg:0 8px 36px rgba(0,0,0,.50);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:-apple-system,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif;
+  line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:100px;
+  transition:background-color .2s,color .2s;
+}
+button{font-family:inherit;cursor:pointer;}
+a{color:inherit;text-decoration:none;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.weserv.nl">
+.admin-bar{display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#f59e0b;color:#1a1000;font-size:12.5px;font-weight:700;padding:9px 16px;text-align:center;}
+.admin-bar.on{display:flex;}
+.admin-bar button{border:1.5px solid #1a1000;background:transparent;color:#1a1000;border-radius:7px;padding:4px 12px;font-size:11.5px;font-weight:800;}
+.admin-bar button:hover{background:#1a1000;color:#f59e0b;}
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/GangwonEduPower/GangwonEduPower.css">
+.theme-toggle{position:fixed;top:14px;right:16px;z-index:200;width:38px;height:38px;border-radius:50%;border:1px solid var(--border2);background:var(--panel);color:var(--ink);font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);transition:border-color .15s,background .2s;}
+.theme-toggle:hover{border-color:var(--accent);}
 
-  <style>
-    @font-face {
-      font-family: 'ReCo';
-      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/ReCo.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.woff2') format('woff2');
-      font-weight: 900;
-      font-style: italic;
-      font-display: swap;
-    }
-  </style>
+.site-header{background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.06);transition:background .2s,border-color .2s;}
+.header-inner{max-width:1440px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;flex:none;}
+.logo-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(27,107,105,.18);}
+.logo-name{font-size:17px;font-weight:800;letter-spacing:-.3px;}
+.logo-sub{font-size:11px;color:var(--ink3);margin-top:1px;}
+.header-search{flex:1;max-width:400px;position:relative;}
+.header-search input{width:100%;height:40px;border:1.5px solid var(--border2);border-radius:20px;padding:0 16px 0 40px;font-size:14px;font-family:inherit;background:var(--bg);color:var(--ink);outline:none;transition:border-color .15s,background .2s;}
+.header-search input:focus{border-color:var(--accent);background:var(--panel);}
+.header-search input::placeholder{color:var(--ink3);}
+.search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ink3);pointer-events:none;font-size:15px;}
+.header-stats{display:flex;gap:22px;flex:none;}
+.hstat .v{font-size:20px;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
+.hstat .k{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;}
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
-  <link rel="stylesheet" href="./css/style.css">
+/* ★ Hero 그라데이션 — 파스텔 블루/라벤더/핑크 */
+.hero{background:linear-gradient(135deg,#b8cef5 0%,#c9b8f0 50%,#f0b8d4 100%);color:#2a2060;padding:36px 28px 32px;}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#1a2540 0%,#2a1a40 50%,#401a2a 100%);}
+[data-theme="dark"] .hero{color:#e8ecf4;}
+.hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.hero-text h1{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:#1a1060;}
+[data-theme="dark"] .hero-text h1{color:#e8ecf4;}
+.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;color:#3a3070;opacity:1;}
+[data-theme="dark"] .hero-text p{color:#a0abbe;}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.hero-badge{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.25);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:#3a2080;}
+[data-theme="dark"] .hero-badge{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#c8b8f0;}
+.hero-box{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.2);border-radius:12px;padding:16px 20px;font-size:13px;line-height:1.85;min-width:260px;max-width:320px;flex:none;word-break:keep-all;color:#2a2060;}
+[data-theme="dark"] .hero-box{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#e8ecf4;}
+.hero-box b{font-weight:700;}
+.hero-kakao{display:inline-flex;align-items:center;gap:7px;background:#FEE500;color:#1a1408;border-radius:8px;padding:8px 15px;font-size:13px;font-weight:800;margin-top:12px;white-space:nowrap;cursor:pointer;border:none;transition:opacity .15s;width:100%;justify-content:center;}
+.hero-kakao:hover{opacity:.82;}
+.hero-phone{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.4);border:1px solid rgba(100,80,200,.2);border-radius:8px;padding:9px 15px;font-size:13px;font-weight:700;margin-top:8px;color:#2a2060;width:100%;}
+[data-theme="dark"] .hero-phone{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#e8ecf4;}
+.hero-phone a{color:#1B6B69;font-weight:800;}
+[data-theme="dark"] .hero-phone a{color:#3fa39f;}
+.hero-phone a:hover{text-decoration:underline;}
+
+.tab-bar{background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40;transition:background .2s,border-color .2s;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-inner{max-width:1440px;margin:0 auto;padding:0 28px;display:flex;}
+.tab-btn{flex:none;display:flex;align-items:center;gap:5px;padding:14px 15px;font-size:13px;font-weight:600;color:var(--ink3);background:none;border:none;border-bottom:2.5px solid transparent;white-space:nowrap;transition:color .12s,border-color .12s;position:relative;top:1px;}
+.tab-btn:hover{color:var(--ink2);}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab-bdg{background:var(--bg2);border-radius:12px;padding:1px 6px;font-size:11px;font-weight:700;color:var(--ink3);}
+.tab-btn.active .tab-bdg{background:var(--accent-l);color:var(--accent);}
+.tab-dot{width:6px;height:6px;border-radius:50%;background:var(--daily);flex:none;}
+
+.main-wrap{max-width:1440px;margin:0 auto;padding:24px 28px 0;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.sec-title{font-size:19px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:9px;}
+.daily-chip{font-size:11.5px;font-weight:700;color:var(--daily);background:rgba(232,92,58,.1);border-radius:20px;padding:3px 9px;display:inline-flex;align-items:center;gap:4px;}
+.daily-chip::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--daily);display:block;}
+.sec-meta{font-size:13px;color:var(--ink3);}
+.sec-meta b{color:var(--ink2);font-weight:700;}
+.sort-bar{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.sort-btn{border:1.5px solid var(--border2);background:var(--panel);color:var(--ink3);border-radius:8px;padding:7px 13px;font-size:12.5px;font-weight:600;transition:.12s;white-space:nowrap;}
+.sort-btn:hover{color:var(--ink2);border-color:var(--accent);}
+.sort-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
+.pcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,background .2s,border-color .2s;position:relative;}
+.pcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.card-img-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:var(--bg2);flex:none;}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .22s,filter .2s;cursor:zoom-in;}
+.pcard:hover .card-img{transform:scale(1.05);}
+.card-img.loading{filter:blur(8px) brightness(.9);}
+/* ★ 이미지 없는 카드도 position:relative 유지 */
+.card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+.card-wh-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.52);backdrop-filter:blur(4px);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:3px 8px;pointer-events:none;}
+.card-copy{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:7px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.38);backdrop-filter:blur(4px);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:.15s;}
+.pcard:hover .card-copy{opacity:1;}
+.card-copy:hover{background:rgba(27,107,105,.75);border-color:transparent;}
+.img-edit-btn{position:absolute;bottom:8px;right:8px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;display:none;transition:.15s;cursor:pointer;}
+.img-edit-btn:hover{background:rgba(232,135,58,.85);border-color:transparent;}
+body.admin-on .img-edit-btn{display:block;}
+.spec-edit-btn{display:none;width:100%;margin-top:4px;border:1.5px dashed var(--border2);background:transparent;color:var(--ink3);font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;transition:.15s;}
+.spec-edit-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l);}
+body.admin-on .spec-edit-btn{display:block;}
+
+.card-body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.card-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.ctag{font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 7px;}
+.ctag-wh{background:var(--accent-l);color:var(--accent);}
+.ctag-tax{background:var(--bg2);color:var(--ink3);}
+.ctag-free{background:rgba(18,160,92,.11);color:var(--free);}
+.card-name{font-size:14.5px;font-weight:700;letter-spacing:-.2px;line-height:1.45;color:var(--ink);}
+.card-spec{font-size:12px;color:var(--ink3);line-height:1.65;padding-top:8px;border-top:1px solid var(--border);white-space:pre-line;}
+.card-spec.custom{color:var(--ink2);border-left:2px solid var(--accent);padding-left:8px;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px solid var(--border);margin-top:auto;}
+.price-lbl{font-size:10px;color:var(--ink3);letter-spacing:.04em;font-weight:600;display:block;margin-bottom:2px;}
+.price-ask{font-size:14px;font-weight:800;color:var(--accent);}
+.ship-free{font-size:12px;font-weight:700;color:var(--free);}
+.ship-paid{font-size:12px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums;}
+
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:200;align-items:center;justify-content:center;padding:28px;cursor:zoom-out;}
+.lightbox.on{display:flex;}
+.lightbox img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.7);cursor:default;transition:filter .2s;}
+.lightbox img.blur{filter:blur(10px);}
+.lb-close{position:fixed;top:16px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.lb-close:hover{background:rgba(255,255,255,.22);}
+
+.search-banner{background:var(--accent-l);border:1.5px solid var(--accent);border-radius:10px;padding:11px 16px;font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.search-banner b{font-weight:800;}
+.search-clear{margin-left:auto;border:1px solid var(--accent);background:var(--panel);color:var(--accent);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:700;flex:none;}
+
+.state-box{text-align:center;padding:72px 20px;color:var(--ink3);font-size:14px;grid-column:1/-1;}
+.state-ico{font-size:40px;margin-bottom:12px;}
+.state-title{font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:5px;}
+.spinner{width:36px;height:36px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.retry-btn{margin-top:14px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink2);border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;}
+.retry-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+.inquiry-fab{position:fixed;bottom:24px;right:24px;z-index:90;background:#FEE500;color:#1a1408;border:none;border-radius:30px;padding:16px 26px;display:inline-flex;align-items:center;gap:13px;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:transform .15s,box-shadow .15s;cursor:pointer;}
+.inquiry-fab:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.26);}
+.fab-emoji{font-size:28px;line-height:1;}
+.fab-text{display:flex;flex-direction:column;gap:1px;}
+.fab-main{font-size:17px;font-weight:900;letter-spacing:-.3px;line-height:1.2;}
+.fab-sub{font-size:12px;font-weight:700;color:#3a3000;opacity:.82;}
+
+.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(6px);background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:22px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:999;white-space:nowrap;}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+
+.modal-backdrop{position:fixed;inset:0;background:rgba(10,20,28,.55);display:none;align-items:center;justify-content:center;z-index:300;}
+.modal-backdrop.show{display:flex;}
+.modal{background:var(--panel);border-radius:var(--radius);padding:24px 26px;width:300px;box-shadow:var(--shadow-lg);}
+.modal h3{margin:0 0 6px;font-size:17px;font-weight:800;}
+.modal p{margin:0 0 16px;font-size:13px;color:var(--ink3);}
+.modal input{width:100%;padding:10px 12px;border:1.5px solid var(--border2);border-radius:9px;font-size:14px;margin-bottom:14px;background:var(--bg);color:var(--ink);outline:none;font-family:inherit;}
+.modal input:focus{border-color:var(--accent);}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;}
+.modal-actions button{padding:9px 16px;border-radius:9px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
+.modal-actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+.site-footer{max-width:1440px;margin:40px auto 0;padding:20px 28px;border-top:1px solid var(--border);font-size:11.5px;color:var(--ink3);text-align:center;line-height:1.9;}
+.site-footer b{color:var(--ink2);}
+#adminLink{color:var(--ink3);opacity:.4;font-size:10px;cursor:pointer;text-decoration:underline;}
+#adminLink:hover{opacity:.7;}
+
+@media(max-width:720px){
+  .header-inner{padding:0 14px;height:56px;}
+  .logo-sub,.header-stats{display:none;}
+  .header-search{max-width:none;}
+  .theme-toggle{top:10px;right:12px;width:34px;height:34px;}
+  .tab-bar{top:56px;}
+  .tab-inner{padding:0 10px;}
+  .tab-btn{padding:12px 11px;font-size:12.5px;}
+  .hero{padding:24px 16px 20px;}
+  .hero-text h1{font-size:19px;}
+  .hero-box{min-width:0;max-width:100%;width:100%;}
+  .main-wrap{padding:14px 12px 0;}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;}
+  .inquiry-fab{padding:13px 18px;gap:10px;bottom:16px;right:16px;}
+  .fab-emoji{font-size:22px;}
+  .fab-main{font-size:14.5px;}
+}
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo-wrap">
-        <div class="logo-icon">🐟</div>
-        <div>
-          <div class="logo-text">(주)마스터</div>
-          <div class="logo-sub">B2B 상품 카탈로그</div>
-        </div>
-      </a>
-      <div class="header-search">
-        <span class="search-icon">🔍</span>
-        <input id="header-search" type="text" placeholder="상품명, 창고명으로 검색..." autocomplete="off">
-      </div>
-      <div class="header-actions">
-        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-kakao">
-          💬 <span class="label">카카오 문의</span>
-        </a>
-        <a href="tel:01059257561" class="btn-call">
-          📞 <span class="label">010-5925-7561</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-logo-circle">
-        <span class="hero-logo-eng">Master</span>
-      </div>
-      <div class="hero-text">
-        <h1 class="hero-title">(주)마스터</h1>
-        <p class="hero-desc">
-          동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여 산지에서<br>
-          직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.
-        </p>
-        <p class="hero-desc" style="margin-top:12px;">
-          저희는 전국 산지 상품을 중심으로 상시 300~500여 가지 이상의<br>
-          농·축·수산물을 꾸준히 운영 중이며, 소량 한 건도 택배로 즉시 납품 가능합니다.
-        </p>
-        <div class="hero-badges">
-          <span class="hero-badge">🏔 산지 직출고</span>
-          <span class="hero-badge">🤝 위탁·사입 모두 가능</span>
-          <span class="hero-badge">1️⃣ 소량 1개도 OK</span>
-          <span class="hero-badge">🚚 택배 즉시 납품</span>
-        </div>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-num" id="total-count">—</div>
-          <div class="stat-label">전체 상품</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num" id="warehouse-count">—</div>
-          <div class="stat-label">운영 창고</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num" id="category-count">—</div>
-          <div class="stat-label">카테고리</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="notice-bar">
-    <div class="notice-inner">
-      <span class="icon">🚚</span>
-      <span>합포장(합배송)은 <strong>같은 창고 상품끼리만</strong> 가능합니다. 서로 다른 창고 상품은 배송비가 각각 붙어요.</span>
-      <span style="margin-left:auto;font-size:11px;color:var(--text-muted)" id="sync-time"></span>
+<div class="modal-backdrop" id="pinModal">
+  <div class="modal">
+    <h3>🔒 관리자 모드</h3>
+    <p>이미지 등록 · 스펙 입력을 하려면 PIN을 입력하세요.</p>
+    <input type="password" id="pinInput" placeholder="PIN 입력" inputmode="numeric" onkeydown="if(event.key==='Enter')tryUnlock()">
+    <div class="modal-actions">
+      <button onclick="closePinModal()">취소</button>
+      <button class="primary" onclick="tryUnlock()">확인</button>
     </div>
   </div>
+</div>
 
-  <div id="loading-progress-wrap" class="loading-progress-wrap">
-    <div class="loading-progress-inner">
-      <div class="loading-text-el">
-        <div class="loading-spinner"></div>
-        <span id="loading-text-el">구글 시트에서 상품 데이터 불러오는 중... 0%</span>
+<div class="admin-bar" id="adminBar">
+  🔓 <b>관리자 모드</b> — ✎ 이미지 / ✎ 스펙 버튼으로 상품 정보를 등록할 수 있어요
+  <button onclick="lockAdmin()">잠그기</button>
+</div>
+
+<button class="theme-toggle" id="themeToggle" aria-label="테마 전환">🌙</button>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <div>
+        <div class="logo-name">(주)마스터 상품 카탈로그</div>
+        <div class="logo-sub">거래처 전용 · 전국 산지 직출고</div>
       </div>
-      <div class="progress-track">
-        <div class="progress-bar" id="loading-bar"></div>
-      </div>
+    </div>
+    <div class="header-search">
+      <span class="search-ico">🔍</span>
+      <input type="search" id="searchInput" placeholder="상품명 검색… 예: 갈치, 새우, 게" autocomplete="off">
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="v" id="statItems">—</div><div class="k">전체 상품</div></div>
+      <div class="hstat"><div class="v" id="statSheets">—</div><div class="k">창고 수</div></div>
     </div>
   </div>
+</header>
 
-  <main class="main-wrap">
-    <aside class="sidebar">
-      <div class="filter-section">
-        <div class="filter-title">🏪 창고별 보기</div>
-        <div id="warehouse-filters">
-          <div style="padding:12px;color:var(--text-muted);font-size:13px;">로딩 중...</div>
-        </div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-title">📞 담당자 연락처</div>
-        <div class="contact-item"><span class="icon">📱</span><span>010-5925-7561</span></div>
-        <div class="contact-item"><span class="icon">💬</span><span>카카오 ID: dd7561</span></div>
-        <div class="contact-item" style="font-size:12px;color:var(--text-muted);">
-          <span class="icon">⏰</span><span>공급가는 카카오·전화로 문의</span>
-        </div>
-        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-contact-kakao">
-          💬 카카오 오픈채팅 바로가기
-        </a>
-      </div>
-    </aside>
-
-    <div class="content-area">
-      <div id="category-pills" class="category-pills">
-        <button class="pill active" data-cat="all">전체</button>
-      </div>
-      <div class="toolbar">
-        <div id="result-info" class="result-info">로딩 중...</div>
-        <div class="toolbar-right">
-          <select id="sort-select" class="sort-select">
-            <option value="default">기본 순서</option>
-            <option value="name-asc">상품명 ↑</option>
-            <option value="name-desc">상품명 ↓</option>
-            <option value="price-asc">단가 낮은순</option>
-            <option value="price-desc">단가 높은순</option>
-          </select>
-          <div class="view-toggle">
-            <button class="view-btn active" data-view="grid" onclick="setView('grid')" title="그리드">⊞</button>
-            <button class="view-btn" data-view="list" onclick="setView('list')" title="목록">☰</button>
-          </div>
-        </div>
-      </div>
-      <div id="product-grid" class="product-grid">
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-        <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
-      </div>
-      <div id="load-more-wrap" class="load-more-wrap" style="display:none;">
-        <button id="load-more-btn" class="btn-load-more" onclick="loadMore()">더 보기</button>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>(주)마스터</h1>
+      <p>동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여 산지에서 직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.<br><br>
+      저희는 전국 산지 상품을 중심으로 상시 <b>300~500여 가지 이상</b>의 농·축·수산물을 꾸준히 운영 중이며, 소량 한 건도 <b>택배로 즉시 납품 가능</b>합니다.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">🏭 산지 직출고</span>
+        <span class="hero-badge">📦 위탁·사입 모두 가능</span>
+        <span class="hero-badge">1️⃣ 소량 1개도 OK</span>
+        <span class="hero-badge">🚚 택배 즉시 납품</span>
       </div>
     </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>
-        <strong style="color:var(--text-secondary)">(주)마스터</strong> &nbsp;|&nbsp;
-        수산·농축산물 전문 유통 &nbsp;|&nbsp; 📞 010-5925-7561 &nbsp;|&nbsp; 💬 카카오 ID: dd7561
-      </p>
-      <p style="margin-top:6px;font-size:12px;">본 카탈로그는 B2B 거래처 전용입니다. 공급단가는 담당자에게 문의해 주세요.</p>
+    <div class="hero-box">
+      <b>📦 합포장 안내</b><br>
+      합배송은 <b>같은 창고 상품끼리만</b> 가능합니다.<br>
+      서로 다른 창고 상품은 배송비가 각각 부과됩니다.<br><br>
+      <b>💬 상품수량 및 단가 문의</b><br>
+      카카오톡으로 편하게 문의해 주세요.<br>
+      <a class="hero-kakao" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener">💬 카카오톡 문의하기</a>
+      <div class="hero-phone">📞 연락처 : <a href="tel:01059257561">010-5925-7561</a></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <div id="modal-overlay" class="modal-overlay" role="presentation"></div>
-  <script src="./js/app.js"></script>
+<nav class="tab-bar"><div class="tab-inner" id="tabInner"></div></nav>
+
+<main class="main-wrap" id="mainWrap">
+  <div class="card-grid">
+    <div class="state-box"><div class="spinner"></div><div class="state-title">상품을 불러오는 중입니다</div></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <b>(주)마스터 상품 카탈로그</b> · 거래처 전용<br>
+  가격 및 재고는 변동될 수 있습니다 · 공급가는 별도 문의로 안내드립니다<br>
+  📞 010-5925-7561 · 💬 <a href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" style="color:var(--ink3);">카카오 오픈채팅</a><br>
+  <span id="ftSync"></span><br>
+  <span id="adminLink" onclick="adminClick()">관리자</span>
+</footer>
+
+<a class="inquiry-fab" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" aria-label="카카오 문의">
+  <span class="fab-emoji">💬</span>
+  <span class="fab-text">
+    <span class="fab-main">가격 문의하기</span>
+    <span class="fab-sub">카카오 오픈채팅 바로가기</span>
+  </span>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <img id="lbImg" alt="">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SHEET_ID    = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
+const GH_OWNER    = 'tjsaidaid';
+const GH_REPO     = 'donghae-catalog';
+const GH_IMG_PATH  = 'data/images.json';
+const GH_SPEC_PATH = 'data/specs.json';
+const GH_PAT_KEY   = 'master_gh_pat';
+const KAKAO_URL   = 'https://open.kakao.com/o/sXPirMMi';
+const ADMIN_PIN   = '10099';
+const AUTO_REFRESH = 5 * 60 * 1000;
+
+const SHEETS = [
+  {name:'당일생물',  label:'당일생물', gid:'322594718',  daily:true},
+  {name:'동해',     label:'동해',     gid:'698072486'},
+  {name:'인천',     label:'인천',     gid:'448241740'},
+  {name:'군산',     label:'군산',     gid:'1105429635'},
+  {name:'충무',     label:'충무',     gid:'1348694541'},
+  {name:'경기',     label:'경기',     gid:'1727608784'},
+  {name:'생고',     label:'생고',     gid:'1605891700'},
+  {name:'키트',     label:'키트',     gid:'1258963443'},
+  {name:'북구',     label:'북구',     gid:'142458129'},
+  {name:'김포',     label:'김포',     gid:'1297549773'},
+  {name:'떡',       label:'떡',       gid:'121792941'},
+  {name:'팡팡',     label:'팡팡',     gid:'1834137489'},
+  {name:'부산',     label:'부산',     gid:'691416386'},
+  {name:'찐한국',   label:'찐한국',   gid:'1620505045'},
+  {name:'단독(유)', label:'단독(유배)',gid:'1786413552'},
+  {name:'단독(무)', label:'단독(무배)',gid:'183236314'},
+  {name:'단독(선물)',label:'단독(선물)',gid:'1003860228'},
+  {name:'마진',     label:'마진',     gid:''},
+];
+
+const SOLD_OUT_MARKERS = [
+  '품절 상품','일시 품절 상품','품절상품','일시품절상품','품절 됩니다','sold out','품절'
+];
+
+const CAT_EMOJI={수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
+const CAT_RE=[
+  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막|가리비|능성어|피문어/],
+  ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창|항정|보쌈|학센|곱내장|염통/],
+  ['과일',/사과|복숭아|포도|한라봉|딸기|수박|참외|멜론|망고|바나나|블루베리|자두|체리|키위|단감|홍시|레몬|오렌지|천도|자몽/],
+  ['채소',/감자|양파|마늘|대파|버섯|고구마|케일|옥수수|호박|배추|무|상추/],
+  ['김치',/김치|깍두기|총각|열무|동치미|절임|된장|고추장|명이|장아찌|파김치|갓김치/],
+  ['떡',/떡|찹쌀|송편|인절미/],
+  ['간식',/엿|강정|냉면|소스|참기름|견과|밤|누룽지|짬뽕|부대찌개|국밥|수제비|칼국수|짜장/],
+];
+function catOf(n){for(const[c,r]of CAT_RE)if(r.test(n))return c;return'기타';}
+
+const GRADS=[['#e8f4fd','#b3d9f5'],['#fdf0e8','#f5c8a3'],['#edfdf0','#a3f5b3'],
+             ['#f8edf5','#e8a3d9'],['#fdfbe8','#f5e8a3'],['#edeff5','#a3b0e8']];
+function gradStyle(n){
+  let h=0;for(let i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%GRADS.length;
+  const[c1,c2]=GRADS[Math.abs(h)%GRADS.length];
+  return`background:linear-gradient(135deg,${c1},${c2});`;
+}
+
+let allData={},imgData={},specData={};
+let activeTab=null,searchQ='',sortMode='sheet';
+let loaded=new Set(),loading=new Set(),lastHash={};
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'>').replace(/"/g,'"');
+const pkey=s=>String(s||'').replace(/\s+/g,'').toLowerCase();
+
+function showToast(msg){
+  const t=$('toast');t.textContent=msg;t.classList.add('on');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2400);
+}
+
+const THEME_KEY='master_theme';
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem(THEME_KEY,t);
+  const btn=$('themeToggle');
+  if(btn)btn.textContent=t==='dark'?'☀️':'🌙';
+}
+applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'dark':'light');
+$('themeToggle').onclick=()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+
+function updateAdminUI(){
+  const on=adminOn();
+  $('adminBar').classList.toggle('on',on);
+  document.body.classList.toggle('admin-on',on);
+  const lnk=$('adminLink');
+  if(lnk)lnk.textContent=on?'🔓 관리자 모드 (잠그기)':'관리자';
+}
+function adminOn(){return sessionStorage.getItem('master_admin')==='1';}
+function adminClick(){
+  if(adminOn()){lockAdmin();return;}
+  $('pinModal').classList.add('show');
+  $('pinInput').value='';
+  setTimeout(()=>$('pinInput').focus(),100);
+}
+function closePinModal(){$('pinModal').classList.remove('show');}
+function tryUnlock(){
+  if($('pinInput').value===ADMIN_PIN){
+    sessionStorage.setItem('master_admin','1');
+    closePinModal();
+    showToast('관리자 모드로 전환됐어요 🔓');
+    updateAdminUI();render();
+  }else{
+    showToast('PIN이 올바르지 않습니다');
+    $('pinInput').value='';$('pinInput').focus();
+  }
+}
+function lockAdmin(){
+  sessionStorage.removeItem('master_admin');
+  showToast('잠갔습니다 🔒');
+  updateAdminUI();render();
+}
+
+async function loadJsonFile(path){
+  try{
+    const res=await fetch(`https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${path}?t=${Date.now()}`,{cache:'no-cache'});
+    if(res.ok)return await res.json();
+  }catch(e){}
+  return{};
+}
+
+async function getToken(){
+  let t=localStorage.getItem(GH_PAT_KEY);
+  if(!t){
+    t=prompt(
+      'GitHub 토큰을 입력하세요.\n\n'+
+      '① github.com → Settings → Developer settings\n'+
+      '② Fine-grained tokens → Generate new token\n'+
+      `③ Repository access: ${GH_OWNER}/${GH_REPO} 만 선택\n`+
+      '④ Permissions → Contents: Read and write\n'+
+      '⑤ 생성된 토큰 붙여넣기\n\n(이 브라우저에만 저장됩니다)'
+    );
+    if(!t)return null;
+    t=t.trim();localStorage.setItem(GH_PAT_KEY,t);
+  }
+  return t;
+}
+function ghHdr(t){return{'Authorization':'Bearer '+t,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
+
+function b64encode(str){
+  const bytes=new TextEncoder().encode(str);
+  let binary='';
+  bytes.forEach(b=>binary+=String.fromCharCode(b));
+  return btoa(binary);
+}
+
+async function getFileSha(api,h){
+  const r=await fetch(api+'?ref=main',{headers:h});
+  if(r.ok){const j=await r.json();return j.sha;}
+  return null;
+}
+async function ghPut(api,h,msg,content,sha){
+  const b={message:msg,content,branch:'main'};
+  if(sha)b.sha=sha;
+  return fetch(api,{method:'PUT',headers:h,body:JSON.stringify(b)});
+}
+async function commitJson(path,data,msg){
+  const token=await getToken();if(!token)return false;
+  const h=ghHdr(token);
+  const api=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`;
+  try{
+    const sha=await getFileSha(api,h);
+    const content=b64encode(JSON.stringify(data,null,2));
+    const res=await ghPut(api,h,msg,content,sha);
+    if(res.ok)return true;
+    if(res.status===401||res.status===403){localStorage.removeItem(GH_PAT_KEY);showToast('토큰이 유효하지 않아요 — 다시 입력해주세요');}
+    else{const j=await res.json().catch(()=>({}));showToast(`저장 실패 (${res.status}) ${j.message||''}`);}
+    return false;
+  }catch(e){showToast('저장 실패 — 네트워크를 확인해주세요');return false;}
+}
+
+function editImage(productName){
+  if(!adminOn())return;
+  const key=pkey(productName),current=imgData[key]||'';
+  const choice=confirm(`"${productName}"\n\n[확인] → 이미지 URL 직접 입력\n[취소] → PC 파일 선택`);
+  if(choice){
+    const newUrl=prompt('이미지 URL을 입력하세요\n(비우면 삭제)',current);
+    if(newUrl===null)return;
+    const trimmed=newUrl.trim();
+    if(trimmed)imgData[key]=trimmed;else delete imgData[key];
+    render();showToast('저장 중… ⏳');
+    commitJson(GH_IMG_PATH,imgData,`관리자: "${productName}" 이미지 등록`).then(ok=>{if(ok){render();showToast('이미지가 저장됐어요 ✅');}});
+  }else{
+    const input=document.createElement('input');
+    input.type='file';input.accept='image/*';
+    input.onchange=async(e)=>{
+      const file=e.target.files[0];if(!file)return;
+      if(file.size>5*1024*1024){showToast('5MB 이하 파일만 가능해요');return;}
+      showToast('업로드 중… ⏳');
+      const b64=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});
+      const token=await getToken();if(!token)return;
+      const h=ghHdr(token);
+      const ext=file.name.split('.').pop().toLowerCase()||'jpg';
+      const safe=pkey(productName).replace(/[^a-z0-9가-힣]/g,'_').slice(0,60);
+      const imgPath=`images/${safe}.${ext}`;
+      const imgApi=`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${imgPath}`;
+      const imgSha=await getFileSha(imgApi,h);
+      const imgRes=await ghPut(imgApi,h,`관리자: "${productName}" 이미지 업로드`,b64,imgSha);
+      if(!imgRes.ok){
+        if(imgRes.status===401||imgRes.status===403){localStorage.removeItem(GH_PAT_KEY);showToast('토큰이 유효하지 않아요');}
+        else{const j=await imgRes.json().catch(()=>({}));showToast(`업로드 실패 (${imgRes.status}) ${j.message||''}`);}
+        return;
+      }
+      imgData[pkey(productName)]=`https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/main/${imgPath}`;
+      const ok=await commitJson(GH_IMG_PATH,imgData,`관리자: "${productName}" 이미지 등록`);
+      if(ok){render();showToast('이미지가 저장됐어요 ✅');}
+    };
+    input.click();
+  }
+}
+
+async function editSpec(productName){
+  if(!adminOn())return;
+  const key=pkey(productName),current=specData[key]||'';
+  const newSpec=prompt(`"${productName}" 스펙 / 비고 입력\n(줄바꿈 가능, 비우면 삭제)`,current);
+  if(newSpec===null)return;
+  const trimmed=newSpec.trim();
+  if(trimmed)specData[key]=trimmed;else delete specData[key];
+  render();showToast('저장 중… ⏳');
+  const ok=await commitJson(GH_SPEC_PATH,specData,`관리자: "${productName}" 스펙 등록`);
+  if(ok){render();showToast('스펙이 저장됐어요 ✅');}
+}
+
+function thumbUrl(url){
+  if(!url||!/^https?:\/\//.test(url))return null;
+  return'https://images.weserv.nl/?url='+encodeURIComponent(url.replace(/^https?:\/\//,''))+'&w=480&h=360&fit=cover&output=webp&q=82';
+}
+
+function parseCSV(text){
+  const rows=[];let row=[],cell='',inQ=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i],n=text[i+1];
+    if(inQ){if(c==='"'&&n==='"'){cell+='"';i++;}else if(c==='"'){inQ=false;}else{cell+=c;}}
+    else{
+      if(c==='"'){inQ=true;}
+      else if(c===','){row.push(cell.trim());cell='';}
+      else if(c==='\n'||(c==='\r'&&n==='\n')){if(c==='\r')i++;row.push(cell.trim());rows.push(row);row=[];cell='';}
+      else{cell+=c;}
+    }
+  }
+  if(cell||row.length){row.push(cell.trim());rows.push(row);}
+  return rows;
+}
+
+function isSoldOutMarker(row){
+  const joined=row.slice(0,3).join(' ').replace(/\s/g,'').toLowerCase();
+  return SOLD_OUT_MARKERS.some(k=>joined.includes(k.replace(/\s/g,'').toLowerCase()));
+}
+
+async function fetchSheet(gid){
+  if(!gid)return[];
+  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&t=${Date.now()}`;
+  const res=await fetch(url,{cache:'no-cache'});
+  if(!res.ok)throw new Error(`HTTP ${res.status}`);
+  const rows=parseCSV(await res.text());
+  let hi=-1;
+  for(let i=0;i<Math.min(rows.length,6);i++){
+    if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){hi=i;break;}
+  }
+  if(hi<0)hi=0;
+  const products=[];
+  for(let i=hi+1;i<rows.length;i++){
+    const r=rows[i];
+    if(!r||r.length<3)continue;
+    if(isSoldOutMarker(r))break;
+    const nm=(r[2]||'').replace(/\s+/g,' ').trim();
+    if(!nm||nm.length<2||nm.includes('상품명'))continue;
+    const whCell=(r[1]||'').trim();
+    if(!whCell&&nm.length>30)continue;
+    const shipRaw=(r[5]||'').trim();
+    const isFree=/무료/.test(shipRaw)||shipRaw==='0';
+    const ship=isFree?0:(parseInt(shipRaw.replace(/[^\d]/g,''),10)||0);
+    const tax=(r[6]||'').trim();
+    const deadline=(r[7]||'').trim();
+    const extra=(r[8]||'').trim();
+    const specParts=[];
+    if(deadline&&deadline!=='-')specParts.push(deadline);
+    if(extra&&extra!=='-')specParts.push(extra);
+    products.push({wh:whCell||'기타',name:nm,isFree,ship,tax,spec:specParts.join(' · '),cat:catOf(nm)});
+  }
+  return products;
+}
+
+function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
+
+function buildTabs(){
+  const inner=$('tabInner');inner.innerHTML='';
+  SHEETS.forEach(s=>{
+    const cnt=loaded.has(s.name)?(allData[s.name]||[]).length:'…';
+    const btn=document.createElement('button');
+    btn.className='tab-btn'+(s.name===activeTab?' active':'');
+    btn.innerHTML=(s.daily?'<span class="tab-dot"></span>':'')+esc(s.label)+`<span class="tab-bdg" id="bdg-${esc(s.name)}">${cnt}</span>`;
+    btn.onclick=()=>switchTab(s.name);
+    inner.appendChild(btn);
+  });
+}
+function updBadge(n){const el=document.getElementById(`bdg-${n}`);if(el)el.textContent=(allData[n]||[]).length;}
+
+async function switchTab(name){
+  activeTab=name;sortMode='sheet';
+  localStorage.setItem('master_tab',name);
+  history.replaceState(null,'','?tab='+encodeURIComponent(name));
+  buildTabs();render();
+  if(!loaded.has(name)&&!loading.has(name)){
+    loading.add(name);
+    try{
+      const sheet=SHEETS.find(s=>s.name===name);
+      const data=await fetchSheet(sheet?sheet.gid:'');
+      allData[name]=data;lastHash[name]=hashList(data);
+      loaded.add(name);updBadge(name);updateStats();
+      if(activeTab===name)render();
+    }catch(e){if(activeTab===name)renderError(name,e);}
+    finally{loading.delete(name);}
+  }
+}
+
+function doSort(list){
+  if(sortMode==='name')return[...list].sort((a,b)=>a.name.localeCompare(b.name,'ko'));
+  if(sortMode==='free')return[...list].sort((a,b)=>(a.isFree?0:1)-(b.isFree?0:1));
+  return list;
+}
+
+function getList(){
+  if(searchQ){
+    const out=[];
+    SHEETS.forEach(s=>{(allData[s.name]||[]).forEach(p=>{if(p.name.toLowerCase().includes(searchQ))out.push({...p,_sheet:s.name,_label:s.label});});});
+    return{mode:'search',list:out};
+  }
+  if(!activeTab)return{mode:'tab',list:[]};
+  return{mode:'tab',list:(allData[activeTab]||[]).map(p=>({...p,_sheet:activeTab}))};
+}
+
+function render(){
+  const wrap=$('mainWrap');
+  const{list}=getList();
+  const si=SHEETS.find(s=>s.name===activeTab);
+  if(!searchQ&&activeTab&&loading.has(activeTab)){
+    wrap.innerHTML=`<div class="card-grid"><div class="state-box"><div class="spinner"></div><div class="state-title">불러오는 중…</div></div></div>`;return;
+  }
+  const sl=doSort(list);let html='';
+  if(searchQ){
+    html+=`<div class="search-banner">🔍 <b>"${esc(searchQ)}"</b> 검색 결과 · ${sl.length}개 <button class="search-clear" onclick="clearSearch()">✕ 검색 지우기</button></div>`;
+  }else{
+    const freeN=sl.filter(p=>p.isFree).length;
+    html+=`<div class="sec-head">
+      <div class="sec-title">${si&&si.daily?'<span class="daily-chip">당일한정</span>':''}${esc(si?si.label:'')} 창고</div>
+      <div class="sec-meta"><b>${sl.length}</b>개 상품${freeN?` · 무료배송 <b>${freeN}</b>건`:''}</div>
+    </div>
+    <div class="sort-bar">
+      <button class="sort-btn ${sortMode==='sheet'?'on':''}" onclick="setSort('sheet')">기본순</button>
+      <button class="sort-btn ${sortMode==='name'?'on':''}" onclick="setSort('name')">이름순</button>
+      <button class="sort-btn ${sortMode==='free'?'on':''}" onclick="setSort('free')">무료배송 먼저</button>
+    </div>`;
+  }
+  html+='<div class="card-grid">';
+  if(!sl.length){
+    const isEmpty=!loading.has(activeTab);
+    html+=isEmpty
+      ?`<div class="state-box"><div class="state-ico">📦</div><div class="state-title">${searchQ?`"${esc(searchQ)}"에 해당하는 상품이 없어요`:'등록된 상품이 없습니다'}</div></div>`
+      :`<div class="state-box"><div class="spinner"></div><div class="state-title">불러오는 중…</div></div>`;
+  }
+  sl.forEach(p=>{html+=cardHtml(p);});
+  html+='</div>';
+  wrap.innerHTML=html;
+}
+
+function cardHtml(p){
+  const label=p._label||(SHEETS.find(s=>s.name===p._sheet)||{}).label||p.wh||'';
+  const emoji=CAT_EMOJI[p.cat||catOf(p.name)]||'📦';
+  const savedImg=imgData[pkey(p.name)]||'';
+  const thumb=thumbUrl(savedImg);
+  const safe=p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
+
+  /* ★ 이미지 없는 카드에도 ✎ 이미지 버튼 표시 */
+  let imgHtml=thumb
+    ?`<img class="card-img loading" src="${esc(thumb)}" data-full="${esc(savedImg)}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.remove('loading')" onerror="this.outerHTML='<div class=\\'card-no-img\\'>${emoji}</div>'">`
+    :`<div class="card-no-img" style="${gradStyle(p.name)}">${emoji}</div>`;
+
+  const tags=[];
+  if(searchQ&&label)tags.push(`<span class="ctag ctag-wh">${esc(label)}</span>`);
+  else if(p.wh)tags.push(`<span class="ctag ctag-wh">${esc(p.wh)}</span>`);
+  if(p.tax)tags.push(`<span class="ctag ctag-tax">${esc(p.tax)}</span>`);
+  if(p.isFree)tags.push(`<span class="ctag ctag-free">무료배송</span>`);
+  const shipHtml=p.isFree?'<span class="ship-free">무료배송</span>':(p.ship>0?`<span class="ship-paid">배송비 ${p.ship.toLocaleString()}원</span>`:'');
+  const customSpec=specData[pkey(p.name)]||'';
+  const displaySpec=customSpec||p.spec||'';
+  return`<article class="pcard">
+    <div class="card-img-wrap">
+      ${imgHtml}
+      <span class="card-wh-badge">${esc(p.wh||label)}</span>
+      <button class="card-copy" title="상품명 복사" onclick="copyName(event,'${safe}')">📋</button>
+      <button class="img-edit-btn" onclick="editImage('${safe}')">✎ 이미지</button>
+    </div>
+    <div class="card-body">
+      ${tags.length?`<div class="card-tags">${tags.join('')}</div>`:''}
+      <div class="card-name">${esc(p.name)}</div>
+      ${displaySpec?`<div class="card-spec${customSpec?' custom':''}">${esc(displaySpec)}</div>`:''}
+      <button class="spec-edit-btn" onclick="editSpec('${safe}')">✎ 스펙 편집${customSpec?' ✅':''}</button>
+      <div class="card-foot">
+        <div><span class="price-lbl">공급가</span><span class="price-ask">별도 문의</span></div>
+        <div>${shipHtml}</div>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderError(name,err){
+  if(activeTab!==name)return;
+  $('mainWrap').innerHTML=`<div class="card-grid"><div class="state-box"><div class="state-ico">⚠️</div><div class="state-title">불러오지 못했습니다</div><div style="font-size:12px;color:var(--ink3);margin-top:4px">${esc(String(err))}</div><button class="retry-btn" onclick="retryTab('${esc(name)}')">다시 시도</button></div></div>`;
+}
+
+function updateStats(){
+  let t=0;Object.values(allData).forEach(a=>t+=a.length);
+  $('statItems').textContent=t.toLocaleString();
+  $('statSheets').textContent=SHEETS.filter(s=>s.gid).length;
+}
+
+async function refreshAll(){
+  if(document.hidden)return;
+  let changed=false;
+  for(const s of SHEETS){
+    if(!loaded.has(s.name)||!s.gid)continue;
+    try{
+      const fresh=await fetchSheet(s.gid);
+      const h=hashList(fresh);
+      if(h!==lastHash[s.name]){allData[s.name]=fresh;lastHash[s.name]=h;updBadge(s.name);changed=true;}
+    }catch(e){}
+  }
+  if(changed){
+    updateStats();render();
+    const now=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',hour12:false,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    const ft=$('ftSync');if(ft)ft.textContent='마지막 갱신 '+now;
+  }
+}
+setInterval(()=>refreshAll(),AUTO_REFRESH);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshAll();});
+
+async function loadAll(){
+  for(const s of SHEETS){
+    if(loaded.has(s.name)||loading.has(s.name))continue;
+    loading.add(s.name);
+    try{
+      const data=await fetchSheet(s.gid);
+      allData[s.name]=data;lastHash[s.name]=hashList(data);
+      loaded.add(s.name);updBadge(s.name);updateStats();
+      if(searchQ)render();
+    }catch(e){}
+    finally{loading.delete(s.name);}
+  }
+}
+
+document.addEventListener('click',e=>{
+  const img=e.target.closest('.card-img');
+  if(img){
+    const full=img.getAttribute('data-full')||img.src;
+    const li=$('lbImg');li.classList.add('blur');li.src=img.src;
+    $('lightbox').classList.add('on');document.body.style.overflow='hidden';
+    if(full&&full!==img.src){const hi=new Image();hi.onload=()=>{li.src=full;li.classList.remove('blur');};hi.onerror=()=>li.classList.remove('blur');hi.src=full;}
+    else li.classList.remove('blur');
+    return;
+  }
+  if(e.target.id==='lightbox'||e.target.closest('#lbClose'))closeLB();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+function closeLB(){$('lightbox').classList.remove('on');$('lbImg').src='';document.body.style.overflow='';}
+
+function setSort(m){sortMode=m;render();}
+function clearSearch(){$('searchInput').value='';searchQ='';render();}
+function copyName(e,name){e.stopPropagation();navigator.clipboard.writeText(name).then(()=>showToast('상품명이 복사됐어요 📋'));}
+function retryTab(name){loaded.delete(name);loading.delete(name);switchTab(name);}
+$('searchInput').addEventListener('input',e=>{
+  searchQ=e.target.value.trim().toLowerCase();
+  render();
+  if(searchQ)loadAll();
+});
+
+(async()=>{
+  updateAdminUI();
+  [imgData,specData]=await Promise.all([loadJsonFile(GH_IMG_PATH),loadJsonFile(GH_SPEC_PATH)]);
+  const urlTab=new URLSearchParams(location.search).get('tab');
+  const savedTab=localStorage.getItem('master_tab');
+  activeTab=urlTab||savedTab||SHEETS[0].name;
+  buildTabs();loading.add(activeTab);render();
+  try{
+    const sheet=SHEETS.find(s=>s.name===activeTab);
+    const data=await fetchSheet(sheet?sheet.gid:'');
+    allData[activeTab]=data;lastHash[activeTab]=hashList(data);
+    loaded.add(activeTab);updBadge(activeTab);updateStats();
+  }catch(e){renderError(activeTab,e);}
+  finally{loading.delete(activeTab);}
+  render();buildTabs();
+  loadAll();
+})();
+</script>
 </body>
 </html>
