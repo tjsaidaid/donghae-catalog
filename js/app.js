@@ -7,7 +7,9 @@ const CONFIG = {
   phone: '010-5925-7561',
   imageProxy: 'https://images.weserv.nl/?url=',
   imageWidth: 400,
-  sheetBase: 'https://docs.google.com/spreadsheets/d/17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs/export?format=csv&gid=',
+  // gviz/tq 방식 — 시트가 '제한됨'이어도 동작
+  sheetId: '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs',
+  sheetGvizBase: 'https://docs.google.com/spreadsheets/d/17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs/gviz/tq?tqx=out:csv&sheet=',
 };
 
 // ===== 구글 시트 탭 목록 (탭 순서 그대로) =====
@@ -196,7 +198,9 @@ async function init() {
   // 모든 탭 병렬 로드
   const fetchPromises = SHEET_TABS.map(async (tab) => {
     try {
-      const res = await fetch(CONFIG.sheetBase + tab.gid);
+      // gviz/tq 방식: 시트 이름으로 요청 → 제한됨 상태에서도 동작
+      const url = CONFIG.sheetGvizBase + encodeURIComponent(tab.name) + '&t=' + Date.now();
+      const res = await fetch(url, { cache: 'no-cache' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const csvText = await res.text();
       const products = parseSheetTab(csvText, tab.name);
