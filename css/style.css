@@ -217,10 +217,10 @@ body {
   color: var(--primary);
 }
 
-/* ===== Hero Banner ===== */
+/* ===== Hero Banner — 밝은 파란-보라 그라데이션 ===== */
 .hero {
-  background: linear-gradient(135deg, #0D1929 0%, #0C1A2E 40%, #0D1929 100%);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, #BDD0FF 0%, #C8DCFF 25%, #D8CEFF 60%, #C4D4FF 100%);
+  border-bottom: 1px solid rgba(100,130,255,0.2);
   padding: 32px 24px;
   position: relative;
   overflow: hidden;
@@ -229,11 +229,8 @@ body {
 .hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(75,107,251,0.08) 0%, transparent 70%);
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255,255,255,0.45) 0%, rgba(200,215,255,0.15) 100%);
   pointer-events: none;
 }
 
@@ -242,35 +239,65 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-text h1 {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-  line-height: 1.3;
-  font-family: var(--font-main);
+/* 원형 로고 */
+.hero-logo-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #6B8FFF 0%, #3A5BD9 55%, #2A46C4 100%);
+  box-shadow: 0 8px 28px rgba(75,107,251,0.4), inset 0 2px 8px rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.hero-text h1 span {
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-logo-eng {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 6px rgba(0,0,80,0.35), 0 0 20px rgba(255,255,255,0.15);
+  user-select: none;
 }
 
+/* 텍스트 영역 */
+.hero-text { flex: 1; }
+
+/* (주)마스터 타이틀 — 강원교육튼튼체 */
+.hero-title {
+  font-family: 'GangwonEdu Power', 'Noto Sans KR', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #1A3AB8;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  -webkit-text-stroke: 0.4px rgba(255,255,255,0.7);
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.5), 3px 3px 8px rgba(75,107,251,0.2);
+}
+
+/* 본문 설명 — 레코체 */
 .hero-desc {
-  margin-top: 8px;
+  font-family: 'ReCo', 'Noto Sans KR', sans-serif;
   font-size: 14px;
-  color: var(--text-secondary);
-  max-width: 500px;
-  line-height: 1.7;
-  font-family: var(--font-main);
+  font-weight: 500;
+  color: #1E3FB8;
+  line-height: 1.8;
+  letter-spacing: -0.1px;
+  text-shadow: 0.5px 0.5px 2px rgba(255,255,255,0.6);
 }
 
+.hero-desc--mt { margin-top: 10px; }
+
+/* 배지 */
 .hero-badges {
   display: flex;
   flex-wrap: wrap;
@@ -279,30 +306,49 @@ body {
 }
 
 .hero-badge {
-  background: rgba(75,107,251,0.1);
-  border: 1px solid rgba(75,107,251,0.2);
-  color: var(--primary);
-  padding: 5px 12px;
+  background: rgba(255,255,255,0.72);
+  border: 1.5px solid rgba(75,107,251,0.22);
+  color: #2A46C4;
+  padding: 5px 13px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 600;
-  font-family: var(--font-main);
+  font-weight: 700;
+  font-family: 'GangwonEdu Power', 'Noto Sans KR', sans-serif;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 6px rgba(75,107,251,0.1);
+  transition: background 0.15s, transform 0.15s;
 }
 
+.hero-badge:hover {
+  background: rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+}
+
+/* 통계 */
 .hero-stats {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   flex-shrink: 0;
 }
 
 .stat-item {
   text-align: center;
+  background: rgba(255,255,255,0.58);
+  border: 1px solid rgba(75,107,251,0.18);
+  border-radius: 12px;
+  padding: 14px 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(75,107,251,0.08);
 }
 
 .stat-num {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
-  color: var(--primary);
+  color: #2A46C4;
+  line-height: 1;
+  font-family: 'GangwonEdu Power', 'Noto Sans KR', sans-serif;
+  text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
+}
   line-height: 1;
   font-family: var(--font-main);
 }
