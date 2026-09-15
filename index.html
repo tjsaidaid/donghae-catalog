@@ -290,7 +290,7 @@ body.admin-on .spec-edit-btn{display:block;}
 
 <script>
 const SHEET_ID    = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
-const GAS_URL     = 'https://script.google.com/macros/s/AKfycbwDzqp85taPiJBUqK0ier4jsfVGngq4I9TWhuUlQeUVw15IcRk6qHve-yJvNn1Y5XLpAA/exec';
+const GAS_URL     = 'https://script.google.com/macros/s/AKfycbwwzTw3L0yMFrbxx9UB_E6pJnVJFxMdIDGI1ZMD-wfcD8A8uh2YgKwxY3AdijrU5zYH-w/exec';
 const GH_OWNER    = 'tjsaidaid';
 const GH_REPO     = 'donghae-catalog';
 const GH_IMG_PATH  = 'data/images.json';
@@ -301,23 +301,23 @@ const ADMIN_PIN   = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
 const SHEETS = [
-  {name:'당일생물', label:'당일생물', gid:'322594718',  daily:true},
-  {name:'동해',    label:'동해',    gid:'698072486'},
-  {name:'인천',    label:'인천',    gid:'448241740'},
-  {name:'군산',    label:'군산',    gid:'1105429635'},
-  {name:'충무',    label:'충무',    gid:'1348694541'},
-  {name:'경기',    label:'경기',    gid:'1727608784'},
-  {name:'생고',    label:'생고',    gid:'1605891700'},
-  {name:'키트',    label:'키트',    gid:'1258963443'},
-  {name:'북구',    label:'북구',    gid:'142458129'},
-  {name:'김포',    label:'김포',    gid:'1297549773'},
-  {name:'떡',      label:'떡',      gid:'121792941'},
-  {name:'팡팡',    label:'팡팡',    gid:'1834137489'},
-  {name:'부산',    label:'부산',    gid:'691416386'},
-  {name:'찐한국',  label:'찐한국',  gid:'1620505045'},
-  {name:'단독(유)',label:'단독(유배)',gid:'1786413552'},
-  {name:'단독(무)',label:'단독(무배)',gid:'183236314'},
-  {name:'단독(선물)',label:'단독(선물)',gid:'1003860228'},
+  {name:'당일생물',  label:'당일생물',    daily:true},
+  {name:'동해',     label:'동해'},
+  {name:'인천',     label:'인천'},
+  {name:'군산',     label:'군산'},
+  {name:'충무',     label:'충무'},
+  {name:'경기',     label:'경기'},
+  {name:'생고',     label:'생고'},
+  {name:'키트',     label:'키트'},
+  {name:'북구',     label:'북구'},
+  {name:'김포',     label:'김포'},
+  {name:'떡',       label:'떡'},
+  {name:'팡팡',     label:'팡팡'},
+  {name:'부산',     label:'부산'},
+  {name:'찐한국',   label:'찐한국'},
+  {name:'단독유',   label:'단독(유배)'},
+  {name:'단독(무배)',label:'단독(무배)'},
+  {name:'단독(선물)',label:'단독(선물)'},
 ];
 
 const SOLD_OUT_MARKERS = ['품절 상품','일시 품절 상품','품절상품','일시품절상품','품절'];
