@@ -42,15 +42,12 @@ body{
 button{font-family:inherit;cursor:pointer;}
 a{color:inherit;text-decoration:none;}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
-
 .admin-bar{display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#f59e0b;color:#1a1000;font-size:12.5px;font-weight:700;padding:9px 16px;text-align:center;}
 .admin-bar.on{display:flex;}
 .admin-bar button{border:1.5px solid #1a1000;background:transparent;color:#1a1000;border-radius:7px;padding:4px 12px;font-size:11.5px;font-weight:800;}
 .admin-bar button:hover{background:#1a1000;color:#f59e0b;}
-
 .theme-toggle{position:fixed;top:14px;right:16px;z-index:200;width:38px;height:38px;border-radius:50%;border:1px solid var(--border2);background:var(--panel);color:var(--ink);font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);transition:border-color .15s,background .2s;}
 .theme-toggle:hover{border-color:var(--accent);}
-
 .site-header{background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;box-shadow:0 1px 8px rgba(0,0,0,.06);transition:background .2s,border-color .2s;}
 .header-inner{max-width:1440px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .logo{display:flex;align-items:center;gap:10px;flex:none;}
@@ -65,15 +62,12 @@ a{color:inherit;text-decoration:none;}
 .header-stats{display:flex;gap:22px;flex:none;}
 .hstat .v{font-size:20px;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
 .hstat .k{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;}
-
-/* ★ Hero 그라데이션 — 파스텔 블루/라벤더/핑크 */
 .hero{background:linear-gradient(135deg,#b8cef5 0%,#c9b8f0 50%,#f0b8d4 100%);color:#2a2060;padding:36px 28px 32px;}
-[data-theme="dark"] .hero{background:linear-gradient(135deg,#1a2540 0%,#2a1a40 50%,#401a2a 100%);}
-[data-theme="dark"] .hero{color:#e8ecf4;}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#1a2540 0%,#2a1a40 50%,#401a2a 100%);color:#e8ecf4;}
 .hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
 .hero-text h1{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:#1a1060;}
 [data-theme="dark"] .hero-text h1{color:#e8ecf4;}
-.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;color:#3a3070;opacity:1;}
+.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;color:#3a3070;}
 [data-theme="dark"] .hero-text p{color:#a0abbe;}
 .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
 .hero-badge{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.25);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:#3a2080;}
@@ -88,7 +82,6 @@ a{color:inherit;text-decoration:none;}
 .hero-phone a{color:#1B6B69;font-weight:800;}
 [data-theme="dark"] .hero-phone a{color:#3fa39f;}
 .hero-phone a:hover{text-decoration:underline;}
-
 .tab-bar{background:var(--panel);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40;transition:background .2s,border-color .2s;}
 .tab-bar::-webkit-scrollbar{display:none;}
 .tab-inner{max-width:1440px;margin:0 auto;padding:0 28px;display:flex;}
@@ -98,7 +91,6 @@ a{color:inherit;text-decoration:none;}
 .tab-bdg{background:var(--bg2);border-radius:12px;padding:1px 6px;font-size:11px;font-weight:700;color:var(--ink3);}
 .tab-btn.active .tab-bdg{background:var(--accent-l);color:var(--accent);}
 .tab-dot{width:6px;height:6px;border-radius:50%;background:var(--daily);flex:none;}
-
 .main-wrap{max-width:1440px;margin:0 auto;padding:24px 28px 0;}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
 .sec-title{font-size:19px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:9px;}
@@ -110,7 +102,6 @@ a{color:inherit;text-decoration:none;}
 .sort-btn{border:1.5px solid var(--border2);background:var(--panel);color:var(--ink3);border-radius:8px;padding:7px 13px;font-size:12.5px;font-weight:600;transition:.12s;white-space:nowrap;}
 .sort-btn:hover{color:var(--ink2);border-color:var(--accent);}
 .sort-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
-
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;}
 .pcard{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s,background .2s,border-color .2s;position:relative;}
 .pcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
@@ -118,7 +109,6 @@ a{color:inherit;text-decoration:none;}
 .card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .22s,filter .2s;cursor:zoom-in;}
 .pcard:hover .card-img{transform:scale(1.05);}
 .card-img.loading{filter:blur(8px) brightness(.9);}
-/* ★ 이미지 없는 카드도 position:relative 유지 */
 .card-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
 .card-wh-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.52);backdrop-filter:blur(4px);color:#fff;font-size:11px;font-weight:700;border-radius:6px;padding:3px 8px;pointer-events:none;}
 .card-copy{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:7px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.38);backdrop-filter:blur(4px);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;opacity:0;transition:.15s;}
@@ -130,7 +120,6 @@ body.admin-on .img-edit-btn{display:block;}
 .spec-edit-btn{display:none;width:100%;margin-top:4px;border:1.5px dashed var(--border2);background:transparent;color:var(--ink3);font-size:11.5px;font-weight:700;border-radius:7px;padding:5px 10px;transition:.15s;}
 .spec-edit-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-l);}
 body.admin-on .spec-edit-btn{display:block;}
-
 .card-body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1;}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap;}
 .ctag{font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 7px;}
@@ -145,18 +134,15 @@ body.admin-on .spec-edit-btn{display:block;}
 .price-ask{font-size:14px;font-weight:800;color:var(--accent);}
 .ship-free{font-size:12px;font-weight:700;color:var(--free);}
 .ship-paid{font-size:12px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums;}
-
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:200;align-items:center;justify-content:center;padding:28px;cursor:zoom-out;}
 .lightbox.on{display:flex;}
 .lightbox img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.7);cursor:default;transition:filter .2s;}
 .lightbox img.blur{filter:blur(10px);}
 .lb-close{position:fixed;top:16px;right:20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .lb-close:hover{background:rgba(255,255,255,.22);}
-
 .search-banner{background:var(--accent-l);border:1.5px solid var(--accent);border-radius:10px;padding:11px 16px;font-size:13.5px;color:var(--accent);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
 .search-banner b{font-weight:800;}
 .search-clear{margin-left:auto;border:1px solid var(--accent);background:var(--panel);color:var(--accent);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:700;flex:none;}
-
 .state-box{text-align:center;padding:72px 20px;color:var(--ink3);font-size:14px;grid-column:1/-1;}
 .state-ico{font-size:40px;margin-bottom:12px;}
 .state-title{font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:5px;}
@@ -164,17 +150,14 @@ body.admin-on .spec-edit-btn{display:block;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .retry-btn{margin-top:14px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink2);border-radius:8px;padding:9px 20px;font-size:13px;font-weight:700;}
 .retry-btn:hover{border-color:var(--accent);color:var(--accent);}
-
 .inquiry-fab{position:fixed;bottom:24px;right:24px;z-index:90;background:#FEE500;color:#1a1408;border:none;border-radius:30px;padding:16px 26px;display:inline-flex;align-items:center;gap:13px;box-shadow:0 8px 30px rgba(0,0,0,.2);transition:transform .15s,box-shadow .15s;cursor:pointer;}
 .inquiry-fab:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(0,0,0,.26);}
 .fab-emoji{font-size:28px;line-height:1;}
 .fab-text{display:flex;flex-direction:column;gap:1px;}
 .fab-main{font-size:17px;font-weight:900;letter-spacing:-.3px;line-height:1.2;}
 .fab-sub{font-size:12px;font-weight:700;color:#3a3000;opacity:.82;}
-
 .toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(6px);background:var(--ink);color:var(--bg);padding:9px 20px;border-radius:22px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:999;white-space:nowrap;}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
-
 .modal-backdrop{position:fixed;inset:0;background:rgba(10,20,28,.55);display:none;align-items:center;justify-content:center;z-index:300;}
 .modal-backdrop.show{display:flex;}
 .modal{background:var(--panel);border-radius:var(--radius);padding:24px 26px;width:300px;box-shadow:var(--shadow-lg);}
@@ -185,12 +168,10 @@ body.admin-on .spec-edit-btn{display:block;}
 .modal-actions{display:flex;gap:8px;justify-content:flex-end;}
 .modal-actions button{padding:9px 16px;border-radius:9px;border:1.5px solid var(--border2);background:var(--panel);color:var(--ink);font-size:13px;font-weight:700;cursor:pointer;}
 .modal-actions button.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
-
 .site-footer{max-width:1440px;margin:40px auto 0;padding:20px 28px;border-top:1px solid var(--border);font-size:11.5px;color:var(--ink3);text-align:center;line-height:1.9;}
 .site-footer b{color:var(--ink2);}
 #adminLink{color:var(--ink3);opacity:.4;font-size:10px;cursor:pointer;text-decoration:underline;}
 #adminLink:hover{opacity:.7;}
-
 @media(max-width:720px){
   .header-inner{padding:0 14px;height:56px;}
   .logo-sub,.header-stats{display:none;}
@@ -270,7 +251,7 @@ body.admin-on .spec-edit-btn{display:block;}
       서로 다른 창고 상품은 배송비가 각각 부과됩니다.<br><br>
       <b>💬 상품수량 및 단가 문의</b><br>
       카카오톡으로 편하게 문의해 주세요.<br>
-      <a class="hero-kakao" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener">💬 카카오톡 문의하기</a>
+      <a class="hero-kakao" href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener">💬 카카오톡 문의하기</a>
       <div class="hero-phone">📞 연락처 : <a href="tel:01059257561">010-5925-7561</a></div>
     </div>
   </div>
@@ -287,12 +268,12 @@ body.admin-on .spec-edit-btn{display:block;}
 <footer class="site-footer">
   <b>(주)마스터 상품 카탈로그</b> · 거래처 전용<br>
   가격 및 재고는 변동될 수 있습니다 · 공급가는 별도 문의로 안내드립니다<br>
-  📞 010-5925-7561 · 💬 <a href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" style="color:var(--ink3);">카카오 오픈채팅</a><br>
+  📞 010-5925-7561 · 💬 <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" style="color:var(--ink3);">카카오 오픈채팅</a><br>
   <span id="ftSync"></span><br>
   <span id="adminLink" onclick="adminClick()">관리자</span>
 </footer>
 
-<a class="inquiry-fab" href="https://open.kakao.com/o/sXPirMMi" target="_blank" rel="noopener" aria-label="카카오 문의">
+<a class="inquiry-fab" href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" aria-label="카카오 문의">
   <span class="fab-emoji">💬</span>
   <span class="fab-text">
     <span class="fab-main">가격 문의하기</span>
@@ -309,43 +290,41 @@ body.admin-on .spec-edit-btn{display:block;}
 
 <script>
 const SHEET_ID    = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
+const GAS_URL     = 'https://script.google.com/macros/s/AKfycbwDzqp85taPiJBUqK0ier4jsfVGngq4I9TWhuUlQeUVw15IcRk6qHve-yJvNn1Y5XLpAA/exec';
 const GH_OWNER    = 'tjsaidaid';
 const GH_REPO     = 'donghae-catalog';
 const GH_IMG_PATH  = 'data/images.json';
 const GH_SPEC_PATH = 'data/specs.json';
 const GH_PAT_KEY   = 'master_gh_pat';
-const KAKAO_URL   = 'https://open.kakao.com/o/sXPirMMi';
+const KAKAO_URL   = 'https://open.kakao.com/o/sdY9NIri';
 const ADMIN_PIN   = '10099';
 const AUTO_REFRESH = 5 * 60 * 1000;
 
 const SHEETS = [
-  {name:'당일생물',  label:'당일생물', gid:'322594718',  daily:true},
-  {name:'동해',     label:'동해',     gid:'698072486'},
-  {name:'인천',     label:'인천',     gid:'448241740'},
-  {name:'군산',     label:'군산',     gid:'1105429635'},
-  {name:'충무',     label:'충무',     gid:'1348694541'},
-  {name:'경기',     label:'경기',     gid:'1727608784'},
-  {name:'생고',     label:'생고',     gid:'1605891700'},
-  {name:'키트',     label:'키트',     gid:'1258963443'},
-  {name:'북구',     label:'북구',     gid:'142458129'},
-  {name:'김포',     label:'김포',     gid:'1297549773'},
-  {name:'떡',       label:'떡',       gid:'121792941'},
-  {name:'팡팡',     label:'팡팡',     gid:'1834137489'},
-  {name:'부산',     label:'부산',     gid:'691416386'},
-  {name:'찐한국',   label:'찐한국',   gid:'1620505045'},
-  {name:'단독(유)', label:'단독(유배)',gid:'1786413552'},
-  {name:'단독(무)', label:'단독(무배)',gid:'183236314'},
+  {name:'당일생물', label:'당일생물', gid:'322594718',  daily:true},
+  {name:'동해',    label:'동해',    gid:'698072486'},
+  {name:'인천',    label:'인천',    gid:'448241740'},
+  {name:'군산',    label:'군산',    gid:'1105429635'},
+  {name:'충무',    label:'충무',    gid:'1348694541'},
+  {name:'경기',    label:'경기',    gid:'1727608784'},
+  {name:'생고',    label:'생고',    gid:'1605891700'},
+  {name:'키트',    label:'키트',    gid:'1258963443'},
+  {name:'북구',    label:'북구',    gid:'142458129'},
+  {name:'김포',    label:'김포',    gid:'1297549773'},
+  {name:'떡',      label:'떡',      gid:'121792941'},
+  {name:'팡팡',    label:'팡팡',    gid:'1834137489'},
+  {name:'부산',    label:'부산',    gid:'691416386'},
+  {name:'찐한국',  label:'찐한국',  gid:'1620505045'},
+  {name:'단독(유)',label:'단독(유배)',gid:'1786413552'},
+  {name:'단독(무)',label:'단독(무배)',gid:'183236314'},
   {name:'단독(선물)',label:'단독(선물)',gid:'1003860228'},
-  {name:'마진',     label:'마진',     gid:''},
 ];
 
-const SOLD_OUT_MARKERS = [
-  '품절 상품','일시 품절 상품','품절상품','일시품절상품','품절 됩니다','sold out','품절'
-];
+const SOLD_OUT_MARKERS = ['품절 상품','일시 품절 상품','품절상품','일시품절상품','품절'];
 
-const CAT_EMOJI={수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
-const CAT_RE=[
-  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막|가리비|능성어|피문어/],
+const CAT_EMOJI = {수산:'🐟',축산:'🥩',과일:'🍑',채소:'🥬',김치:'🥬',떡:'🍡',간식:'🍢',기타:'📦'};
+const CAT_RE = [
+  ['수산',/갈치|오징어|새우|게장|꽃게|대게|킹크랩|조개|굴|홍합|문어|낙지|주꾸미|쭈꾸미|장어|고등어|가자미|전복|꼬막|바지락|멸치|해삼|성게|가리비|명태|황태|아귀|삼치|조기|참치|연어|방어|전어|숭어|병어|우럭|광어|볼락|명란|창난|하모|갑오징어|한치|쥐포|굴비|젓|소라|박대|피데기|홍게|거북손|호래기|물김|다슬기|랍스타|멍게|홍어|갯가재|게|메로|골뱅이|담치|꼼장어|곰치|단새우|살고동|돌꼬막|황금게|오만둥이|귀꼴뚜기|실치|금태|방게|백조기|준치|피꼬막|새꼬막|능성어|피문어/],
   ['축산',/한우|돼지|한돈|흑돼지|소고기|삼겹|목살|족발|달걀|오리|불고기|갈비|정육|막창|곱창|대창|등심|안심|닭|순대|도가니|우족|사골|메추리|양갈비|제육|뼈해장국|닭목살|닭근위|소곱창|항정|보쌈|학센|곱내장|염통/],
   ['과일',/사과|복숭아|포도|한라봉|딸기|수박|참외|멜론|망고|바나나|블루베리|자두|체리|키위|단감|홍시|레몬|오렌지|천도|자몽/],
   ['채소',/감자|양파|마늘|대파|버섯|고구마|케일|옥수수|호박|배추|무|상추/],
@@ -360,7 +339,7 @@ const GRADS=[['#e8f4fd','#b3d9f5'],['#fdf0e8','#f5c8a3'],['#edfdf0','#a3f5b3'],
 function gradStyle(n){
   let h=0;for(let i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))%GRADS.length;
   const[c1,c2]=GRADS[Math.abs(h)%GRADS.length];
-  return`background:linear-gradient(135deg,${c1},${c2});`;
+  return `background:linear-gradient(135deg,${c1},${c2});`;
 }
 
 let allData={},imgData={},specData={};
@@ -443,14 +422,12 @@ async function getToken(){
   return t;
 }
 function ghHdr(t){return{'Authorization':'Bearer '+t,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};}
-
 function b64encode(str){
   const bytes=new TextEncoder().encode(str);
   let binary='';
   bytes.forEach(b=>binary+=String.fromCharCode(b));
   return btoa(binary);
 }
-
 async function getFileSha(api,h){
   const r=await fetch(api+'?ref=main',{headers:h});
   if(r.ok){const j=await r.json();return j.sha;}
@@ -550,40 +527,59 @@ function parseCSV(text){
 }
 
 function isSoldOutMarker(row){
-  const joined=row.slice(0,3).join(' ').replace(/\s/g,'').toLowerCase();
+  const joined=row.slice(0,3).map(c=>String(c||'')).join(' ').replace(/\s/g,'').toLowerCase();
   return SOLD_OUT_MARKERS.some(k=>joined.includes(k.replace(/\s/g,'').toLowerCase()));
 }
 
-async function fetchSheet(gid){
-  if(!gid)return[];
-  const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${gid}&t=${Date.now()}`;
+/* ★ Apps Script 경유 → 구글 시트 '제한됨' 상태에서도 동작 */
+async function fetchSheet(sheetName){
+  if(!sheetName)return[];
+  const url=`${GAS_URL}?sheet=${encodeURIComponent(sheetName)}&t=${Date.now()}`;
   const res=await fetch(url,{cache:'no-cache'});
   if(!res.ok)throw new Error(`HTTP ${res.status}`);
-  const rows=parseCSV(await res.text());
+  const rows=await res.json();
+  if(!Array.isArray(rows))throw new Error('응답 형식 오류');
+
+  /* 헤더 행 찾기 */
   let hi=-1;
   for(let i=0;i<Math.min(rows.length,6);i++){
-    if(rows[i].some(c=>c.replace(/\s/g,'').includes('창고명')||c.replace(/\s/g,'').includes('상품명'))){hi=i;break;}
+    if(rows[i].some(c=>String(c||'').replace(/\s/g,'').includes('창고명')||
+                       String(c||'').replace(/\s/g,'').includes('상품명'))){hi=i;break;}
   }
   if(hi<0)hi=0;
+
+  /* 헤더로 컬럼 인덱스 파악 */
+  const hdr=rows[hi].map(c=>String(c||''));
+  const ci={
+    wh:  hdr.findIndex(c=>c.includes('창고명')),
+    name:hdr.findIndex(c=>c.includes('상품명')),
+    ship:hdr.findIndex(c=>c.includes('택배비')),
+    tax: hdr.findIndex(c=>c.includes('면과세')),
+    note:hdr.findIndex(c=>c.includes('기타')||c.includes('특이사항')),
+    dead:hdr.findIndex(c=>c.includes('발주마감')||c.includes('마감')),
+  };
+  if(ci.wh<0) ci.wh=1;
+  if(ci.name<0)ci.name=2;
+
   const products=[];
   for(let i=hi+1;i<rows.length;i++){
     const r=rows[i];
-    if(!r||r.length<3)continue;
+    if(!r||r.length<2)continue;
     if(isSoldOutMarker(r))break;
-    const nm=(r[2]||'').replace(/\s+/g,' ').trim();
+    const nm=String(r[ci.name]||'').replace(/\s+/g,' ').trim();
     if(!nm||nm.length<2||nm.includes('상품명'))continue;
-    const whCell=(r[1]||'').trim();
-    if(!whCell&&nm.length>30)continue;
-    const shipRaw=(r[5]||'').trim();
+    const wh=String(r[ci.wh]||'').trim();
+    if(!wh&&nm.length>30)continue;
+    const shipRaw=String(ci.ship>=0?r[ci.ship]||'':'').trim();
     const isFree=/무료/.test(shipRaw)||shipRaw==='0';
-    const ship=isFree?0:(parseInt(shipRaw.replace(/[^\d]/g,''),10)||0);
-    const tax=(r[6]||'').trim();
-    const deadline=(r[7]||'').trim();
-    const extra=(r[8]||'').trim();
+    const ship=isFree?0:(parseInt(String(shipRaw).replace(/[^\d]/g,''),10)||0);
+    const tax=String(ci.tax>=0?r[ci.tax]||'':'').trim();
+    const dead=String(ci.dead>=0?r[ci.dead]||'':'').trim();
+    const note=String(ci.note>=0?r[ci.note]||'':'').trim();
     const specParts=[];
-    if(deadline&&deadline!=='-')specParts.push(deadline);
-    if(extra&&extra!=='-')specParts.push(extra);
-    products.push({wh:whCell||'기타',name:nm,isFree,ship,tax,spec:specParts.join(' · '),cat:catOf(nm)});
+    if(dead&&dead!=='-')specParts.push(dead);
+    if(note&&note!=='-')specParts.push(note);
+    products.push({wh:wh||'기타',name:nm,isFree,ship,tax,spec:specParts.join(' · '),cat:catOf(nm)});
   }
   return products;
 }
@@ -611,8 +607,7 @@ async function switchTab(name){
   if(!loaded.has(name)&&!loading.has(name)){
     loading.add(name);
     try{
-      const sheet=SHEETS.find(s=>s.name===name);
-      const data=await fetchSheet(sheet?sheet.gid:'');
+      const data=await fetchSheet(name); /* ★ 시트 이름으로 호출 */
       allData[name]=data;lastHash[name]=hashList(data);
       loaded.add(name);updBadge(name);updateStats();
       if(activeTab===name)render();
@@ -677,12 +672,9 @@ function cardHtml(p){
   const savedImg=imgData[pkey(p.name)]||'';
   const thumb=thumbUrl(savedImg);
   const safe=p.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');
-
-  /* ★ 이미지 없는 카드에도 ✎ 이미지 버튼 표시 */
   let imgHtml=thumb
     ?`<img class="card-img loading" src="${esc(thumb)}" data-full="${esc(savedImg)}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.remove('loading')" onerror="this.outerHTML='<div class=\\'card-no-img\\'>${emoji}</div>'">`
     :`<div class="card-no-img" style="${gradStyle(p.name)}">${emoji}</div>`;
-
   const tags=[];
   if(searchQ&&label)tags.push(`<span class="ctag ctag-wh">${esc(label)}</span>`);
   else if(p.wh)tags.push(`<span class="ctag ctag-wh">${esc(p.wh)}</span>`);
@@ -719,16 +711,16 @@ function renderError(name,err){
 function updateStats(){
   let t=0;Object.values(allData).forEach(a=>t+=a.length);
   $('statItems').textContent=t.toLocaleString();
-  $('statSheets').textContent=SHEETS.filter(s=>s.gid).length;
+  $('statSheets').textContent=SHEETS.length;
 }
 
 async function refreshAll(){
   if(document.hidden)return;
   let changed=false;
   for(const s of SHEETS){
-    if(!loaded.has(s.name)||!s.gid)continue;
+    if(!loaded.has(s.name))continue;
     try{
-      const fresh=await fetchSheet(s.gid);
+      const fresh=await fetchSheet(s.name); /* ★ 시트 이름으로 호출 */
       const h=hashList(fresh);
       if(h!==lastHash[s.name]){allData[s.name]=fresh;lastHash[s.name]=h;updBadge(s.name);changed=true;}
     }catch(e){}
@@ -747,7 +739,7 @@ async function loadAll(){
     if(loaded.has(s.name)||loading.has(s.name))continue;
     loading.add(s.name);
     try{
-      const data=await fetchSheet(s.gid);
+      const data=await fetchSheet(s.name); /* ★ 시트 이름으로 호출 */
       allData[s.name]=data;lastHash[s.name]=hashList(data);
       loaded.add(s.name);updBadge(s.name);updateStats();
       if(searchQ)render();
@@ -789,8 +781,7 @@ $('searchInput').addEventListener('input',e=>{
   activeTab=urlTab||savedTab||SHEETS[0].name;
   buildTabs();loading.add(activeTab);render();
   try{
-    const sheet=SHEETS.find(s=>s.name===activeTab);
-    const data=await fetchSheet(sheet?sheet.gid:'');
+    const data=await fetchSheet(activeTab); /* ★ 시트 이름으로 호출 */
     allData[activeTab]=data;lastHash[activeTab]=hashList(data);
     loaded.add(activeTab);updBadge(activeTab);updateStats();
   }catch(e){renderError(activeTab,e);}
