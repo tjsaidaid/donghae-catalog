@@ -290,7 +290,7 @@ body.admin-on .spec-edit-btn{display:block;}
 
 <script>
 const SHEET_ID    = '17MPa0n4aMNYBhBEaKPnGLQnxXM6STW-UB5yUif_FSBs';
-const GAS_URL     = 'https://script.google.com/macros/s/AKfycbwwzTw3L0yMFrbxx9UB_E6pJnVJFxMdIDGI1ZMD-wfcD8A8uh2YgKwxY3AdijrU5zYH-w/exec';
+const GAS_URL     = 'https://script.google.com/macros/s/AKfycby36f-sZonEgbsx5v9XILJLcZzJQb7Tn_1bMFP2nmwivVKXAnTp3fkUDkYMcuqokxBR/exec';
 const GH_OWNER    = 'tjsaidaid';
 const GH_REPO     = 'donghae-catalog';
 const GH_IMG_PATH  = 'data/images.json';
@@ -531,57 +531,68 @@ function isSoldOutMarker(row){
   return SOLD_OUT_MARKERS.some(k=>joined.includes(k.replace(/\s/g,'').toLowerCase()));
 }
 
-/* ★ Apps Script 경유 → 구글 시트 '제한됨' 상태에서도 동작 */
-async function fetchSheet(sheetName){
-  if(!sheetName)return[];
-  const url=`${GAS_URL}?sheet=${encodeURIComponent(sheetName)}&t=${Date.now()}`;
-  const res=await fetch(url,{cache:'no-cache'});
-  if(!res.ok)throw new Error(`HTTP ${res.status}`);
-  const rows=await res.json();
-  if(!Array.isArray(rows))throw new Error('응답 형식 오류');
+/* ★ 전체 시트 한 번에 로딩 — Apps Script 1회 호출로 모든 탭 데이터 수신 */
+let _allRawCache = null;
+let _allRawPromise = null;
 
-  /* 헤더 행 찾기 */
-  let hi=-1;
-  for(let i=0;i<Math.min(rows.length,6);i++){
-    if(rows[i].some(c=>String(c||'').replace(/\s/g,'').includes('창고명')||
-                       String(c||'').replace(/\s/g,'').includes('상품명'))){hi=i;break;}
+async function fetchAllRaw() {
+  if (_allRawCache) return _allRawCache;
+  if (_allRawPromise) return _allRawPromise;
+  _allRawPromise = fetch(`${GAS_URL}?t=${Date.now()}`, {cache:'no-cache'})
+    .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+    .then(data => { _allRawCache = data; _allRawPromise = null; return data; })
+    .catch(e => { _allRawPromise = null; throw e; });
+  return _allRawPromise;
+}
+
+function parseRows(rows) {
+  if (!Array.isArray(rows)) throw new Error('응답 형식 오류');
+  let hi = -1;
+  for (let i = 0; i < Math.min(rows.length, 6); i++) {
+    if (rows[i].some(c => String(c||'').replace(/\s/g,'').includes('창고명') ||
+                          String(c||'').replace(/\s/g,'').includes('상품명'))) { hi = i; break; }
   }
-  if(hi<0)hi=0;
-
-  /* 헤더로 컬럼 인덱스 파악 */
-  const hdr=rows[hi].map(c=>String(c||''));
-  const ci={
-    wh:  hdr.findIndex(c=>c.includes('창고명')),
-    name:hdr.findIndex(c=>c.includes('상품명')),
-    ship:hdr.findIndex(c=>c.includes('택배비')),
-    tax: hdr.findIndex(c=>c.includes('면과세')),
-    note:hdr.findIndex(c=>c.includes('기타')||c.includes('특이사항')),
-    dead:hdr.findIndex(c=>c.includes('발주마감')||c.includes('마감')),
+  if (hi < 0) hi = 0;
+  const hdr = rows[hi].map(c => String(c||''));
+  const ci = {
+    wh:   hdr.findIndex(c => c.includes('창고명')),
+    name: hdr.findIndex(c => c.includes('상품명')),
+    ship: hdr.findIndex(c => c.includes('택배비')),
+    tax:  hdr.findIndex(c => c.includes('면과세')),
+    note: hdr.findIndex(c => c.includes('기타') || c.includes('특이사항')),
+    dead: hdr.findIndex(c => c.includes('발주마감') || c.includes('마감')),
   };
-  if(ci.wh<0) ci.wh=1;
-  if(ci.name<0)ci.name=2;
-
-  const products=[];
-  for(let i=hi+1;i<rows.length;i++){
-    const r=rows[i];
-    if(!r||r.length<2)continue;
-    if(isSoldOutMarker(r))break;
-    const nm=String(r[ci.name]||'').replace(/\s+/g,' ').trim();
-    if(!nm||nm.length<2||nm.includes('상품명'))continue;
-    const wh=String(r[ci.wh]||'').trim();
-    if(!wh&&nm.length>30)continue;
-    const shipRaw=String(ci.ship>=0?r[ci.ship]||'':'').trim();
-    const isFree=/무료/.test(shipRaw)||shipRaw==='0';
-    const ship=isFree?0:(parseInt(String(shipRaw).replace(/[^\d]/g,''),10)||0);
-    const tax=String(ci.tax>=0?r[ci.tax]||'':'').trim();
-    const dead=String(ci.dead>=0?r[ci.dead]||'':'').trim();
-    const note=String(ci.note>=0?r[ci.note]||'':'').trim();
-    const specParts=[];
-    if(dead&&dead!=='-')specParts.push(dead);
-    if(note&&note!=='-')specParts.push(note);
-    products.push({wh:wh||'기타',name:nm,isFree,ship,tax,spec:specParts.join(' · '),cat:catOf(nm)});
+  if (ci.wh < 0)  ci.wh  = 1;
+  if (ci.name < 0) ci.name = 2;
+  const products = [];
+  for (let i = hi + 1; i < rows.length; i++) {
+    const r = rows[i];
+    if (!r || r.length < 2) continue;
+    if (isSoldOutMarker(r)) break;
+    const nm = String(r[ci.name]||'').replace(/\s+/g,' ').trim();
+    if (!nm || nm.length < 2 || nm.includes('상품명')) continue;
+    const wh = String(r[ci.wh]||'').trim();
+    if (!wh && nm.length > 30) continue;
+    const shipRaw = String(ci.ship >= 0 ? r[ci.ship]||'' : '').trim();
+    const isFree = /무료/.test(shipRaw) || shipRaw === '0';
+    const ship = isFree ? 0 : (parseInt(String(shipRaw).replace(/[^\d]/g,''), 10) || 0);
+    const tax  = String(ci.tax  >= 0 ? r[ci.tax] ||'' : '').trim();
+    const dead = String(ci.dead >= 0 ? r[ci.dead]||'' : '').trim();
+    const note = String(ci.note >= 0 ? r[ci.note]||'' : '').trim();
+    const specParts = [];
+    if (dead && dead !== '-') specParts.push(dead);
+    if (note && note !== '-') specParts.push(note);
+    products.push({wh: wh||'기타', name: nm, isFree, ship, tax, spec: specParts.join(' · '), cat: catOf(nm)});
   }
   return products;
+}
+
+async function fetchSheet(sheetName) {
+  if (!sheetName) return [];
+  const all = await fetchAllRaw();
+  const rows = all[sheetName];
+  if (!rows) throw new Error('시트 없음: ' + sheetName);
+  return parseRows(rows);
 }
 
 function hashList(arr){return arr.map(p=>p.name+'|'+p.wh).join('||');}
@@ -604,10 +615,14 @@ async function switchTab(name){
   localStorage.setItem('master_tab',name);
   history.replaceState(null,'','?tab='+encodeURIComponent(name));
   buildTabs();render();
+  /* 아직 안 로딩된 탭이면 캐시에서 즉시 파싱 (이미 fetchAllRaw 완료됨) */
   if(!loaded.has(name)&&!loading.has(name)){
     loading.add(name);
     try{
-      const data=await fetchSheet(name); /* ★ 시트 이름으로 호출 */
+      const allRaw=await fetchAllRaw();
+      const rows=allRaw[name];
+      if(!rows) throw new Error('시트 없음');
+      const data=parseRows(rows);
       allData[name]=data;lastHash[name]=hashList(data);
       loaded.add(name);updBadge(name);updateStats();
       if(activeTab===name)render();
@@ -716,15 +731,21 @@ function updateStats(){
 
 async function refreshAll(){
   if(document.hidden)return;
+  _allRawCache = null; /* 캐시 초기화 → 새로 전체 로딩 */
   let changed=false;
-  for(const s of SHEETS){
-    if(!loaded.has(s.name))continue;
-    try{
-      const fresh=await fetchSheet(s.name); /* ★ 시트 이름으로 호출 */
-      const h=hashList(fresh);
-      if(h!==lastHash[s.name]){allData[s.name]=fresh;lastHash[s.name]=h;updBadge(s.name);changed=true;}
-    }catch(e){}
-  }
+  try {
+    const fresh = await fetchAllRaw();
+    for(const s of SHEETS){
+      if(!loaded.has(s.name))continue;
+      const rows = fresh[s.name];
+      if(!rows) continue;
+      try {
+        const data = parseRows(rows);
+        const h=hashList(data);
+        if(h!==lastHash[s.name]){allData[s.name]=data;lastHash[s.name]=h;updBadge(s.name);changed=true;}
+      } catch(e){}
+    }
+  } catch(e){}
   if(changed){
     updateStats();render();
     const now=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',hour12:false,month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
@@ -734,19 +755,7 @@ async function refreshAll(){
 setInterval(()=>refreshAll(),AUTO_REFRESH);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshAll();});
 
-async function loadAll(){
-  for(const s of SHEETS){
-    if(loaded.has(s.name)||loading.has(s.name))continue;
-    loading.add(s.name);
-    try{
-      const data=await fetchSheet(s.name); /* ★ 시트 이름으로 호출 */
-      allData[s.name]=data;lastHash[s.name]=hashList(data);
-      loaded.add(s.name);updBadge(s.name);updateStats();
-      if(searchQ)render();
-    }catch(e){}
-    finally{loading.delete(s.name);}
-  }
-}
+
 
 document.addEventListener('click',e=>{
   const img=e.target.closest('.card-img');
@@ -766,11 +775,10 @@ function closeLB(){$('lightbox').classList.remove('on');$('lbImg').src='';docume
 function setSort(m){sortMode=m;render();}
 function clearSearch(){$('searchInput').value='';searchQ='';render();}
 function copyName(e,name){e.stopPropagation();navigator.clipboard.writeText(name).then(()=>showToast('상품명이 복사됐어요 📋'));}
-function retryTab(name){loaded.delete(name);loading.delete(name);switchTab(name);}
+function retryTab(name){loaded.delete(name);loading.delete(name);_allRawCache=null;switchTab(name);}
 $('searchInput').addEventListener('input',e=>{
   searchQ=e.target.value.trim().toLowerCase();
   render();
-  if(searchQ)loadAll();
 });
 
 (async()=>{
@@ -779,15 +787,30 @@ $('searchInput').addEventListener('input',e=>{
   const urlTab=new URLSearchParams(location.search).get('tab');
   const savedTab=localStorage.getItem('master_tab');
   activeTab=urlTab||savedTab||SHEETS[0].name;
-  buildTabs();loading.add(activeTab);render();
+  buildTabs();render();
+
+  /* ★ Apps Script 1번 호출로 전체 시트 동시 로딩 */
   try{
-    const data=await fetchSheet(activeTab); /* ★ 시트 이름으로 호출 */
-    allData[activeTab]=data;lastHash[activeTab]=hashList(data);
-    loaded.add(activeTab);updBadge(activeTab);updateStats();
-  }catch(e){renderError(activeTab,e);}
-  finally{loading.delete(activeTab);}
-  render();buildTabs();
-  loadAll();
+    const allRaw = await fetchAllRaw();
+    for(const s of SHEETS){
+      if(loading.has(s.name)||loaded.has(s.name)) continue;
+      loading.add(s.name);
+      try{
+        const rows = allRaw[s.name];
+        if(!rows) throw new Error('시트 없음');
+        const data = parseRows(rows);
+        allData[s.name]=data; lastHash[s.name]=hashList(data);
+        loaded.add(s.name); updBadge(s.name);
+      }catch(e){
+        if(s.name===activeTab) renderError(s.name, e);
+      }finally{
+        loading.delete(s.name);
+      }
+    }
+    updateStats(); render(); buildTabs();
+  }catch(e){
+    renderError(activeTab, e);
+  }
 })();
 </script>
 </body>
