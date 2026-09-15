@@ -5,27 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>(주)마스터 — 상품 카탈로그</title>
   <meta name="description" content="(주)마스터 B2B 상품 카탈로그 — 전국 산지 수산·농축산물 전문 유통. 당일생물, 300~600종 이상 상시 운영.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.weserv.nl">
+
+  <!-- Google Fonts: Pretendard 대체용 Noto Sans KR + 본문용 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- 강원교육튼튼체 (타이틀용) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/GangwonEduPower/GangwonEduPower.css">
+
+  <!-- 레코체 (본문 설명용) — 눈누 import -->
   <style>
     @font-face {
       font-family: 'ReCo';
       src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/ReCo.woff2') format('woff2');
-      font-weight: normal; font-style: normal; font-display: swap;
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
+    /* Pretendard (영문 로고용) */
     @font-face {
       font-family: 'Pretendard';
       src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.woff2') format('woff2');
-      font-weight: 900; font-style: italic; font-display: swap;
+      font-weight: 900;
+      font-style: italic;
+      font-display: swap;
     }
   </style>
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+
+  <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="logo-wrap">
@@ -35,26 +50,44 @@
           <div class="logo-sub">B2B 상품 카탈로그</div>
         </div>
       </a>
+
       <div class="header-search">
         <span class="search-icon">🔍</span>
         <input id="header-search" type="text" placeholder="상품명, 창고명으로 검색..." autocomplete="off">
       </div>
+
       <div class="header-actions">
-        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-kakao">💬 <span class="label">카카오 문의</span></a>
-        <a href="tel:01059257561" class="btn-call">📞 <span class="label">010-5925-7561</span></a>
+        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-kakao">
+          💬 <span class="label">카카오 문의</span>
+        </a>
+        <a href="tel:01059257561" class="btn-call">
+          📞 <span class="label">010-5925-7561</span>
+        </a>
       </div>
     </div>
   </header>
 
+  <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="hero-inner">
+
+      <!-- 왼쪽: Master 원형 로고 -->
       <div class="hero-logo-circle">
         <span class="hero-logo-eng">Master</span>
       </div>
+
+      <!-- 가운데: 텍스트 -->
       <div class="hero-text">
         <h1 class="hero-title">(주)마스터</h1>
-        <p class="hero-desc">동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여<br>산지에서 직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.</p>
-        <p class="hero-desc hero-desc--mt">저희는 전국 산지 상품을 중심으로<br>당일·상시 300~500여 가지 이상의 농·축·수산물을 꾸준히 운영 중이며,<br>소량 한 건도 택배로 즉시 납품 가능합니다.</p>
+        <p class="hero-desc">
+          동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여<br>
+          산지에서 직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.
+        </p>
+        <p class="hero-desc hero-desc--mt">
+          저희는 전국 산지 상품을 중심으로<br>
+          당일·상시 300~500여 가지 이상의 농·축·수산물을 꾸준히 운영 중이며,<br>
+          소량 한 건도 택배로 즉시 납품 가능합니다.
+        </p>
         <div class="hero-badges">
           <span class="hero-badge">🏔 산지 직출고</span>
           <span class="hero-badge">🤝 위탁·사입 모두 가능</span>
@@ -62,14 +95,27 @@
           <span class="hero-badge">🚚 택배 즉시 납품</span>
         </div>
       </div>
+
+      <!-- 오른쪽: 통계 -->
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num" id="total-count">—</div><div class="stat-label">전체 상품</div></div>
-        <div class="stat-item"><div class="stat-num" id="warehouse-count">—</div><div class="stat-label">운영 창고</div></div>
-        <div class="stat-item"><div class="stat-num" id="category-count">—</div><div class="stat-label">카테고리</div></div>
+        <div class="stat-item">
+          <div class="stat-num" id="total-count">—</div>
+          <div class="stat-label">전체 상품</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="warehouse-count">—</div>
+          <div class="stat-label">운영 창고</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" id="category-count">—</div>
+          <div class="stat-label">카테고리</div>
+        </div>
       </div>
+
     </div>
   </section>
 
+  <!-- ===== Notice ===== -->
   <div class="notice-bar">
     <div class="notice-inner">
       <span class="icon">🚚</span>
@@ -78,32 +124,58 @@
     </div>
   </div>
 
+  <!-- ===== 로딩 프로그레스 ===== -->
   <div id="loading-progress-wrap" class="loading-progress-wrap">
     <div class="loading-progress-inner">
       <div class="loading-text-el">
         <div class="loading-spinner"></div>
         <span id="loading-text-el">구글 시트에서 상품 데이터 불러오는 중... 0%</span>
       </div>
-      <div class="progress-track"><div class="progress-bar" id="loading-bar"></div></div>
+      <div class="progress-track">
+        <div class="progress-bar" id="loading-bar"></div>
+      </div>
     </div>
   </div>
 
+  <!-- ===== Main ===== -->
   <main class="main-wrap">
+
+    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="filter-section">
         <div class="filter-title">🏪 창고별 보기</div>
-        <div id="warehouse-filters"><div style="padding:12px;color:var(--text-muted);font-size:13px;">로딩 중...</div></div>
+        <div id="warehouse-filters">
+          <div style="padding:12px;color:var(--text-muted);font-size:13px;">로딩 중...</div>
+        </div>
       </div>
+
       <div class="contact-card">
         <div class="contact-title">📞 담당자 연락처</div>
-        <div class="contact-item"><span class="icon">📱</span><span>010-5925-7561</span></div>
-        <div class="contact-item"><span class="icon">💬</span><span>카카오 ID: dd7561</span></div>
-        <div class="contact-item" style="font-size:12px;color:var(--text-muted);"><span class="icon">⏰</span><span>공급가는 카카오·전화로 문의</span></div>
-        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-contact-kakao">💬 카카오 오픈채팅 바로가기</a>
+        <div class="contact-item">
+          <span class="icon">📱</span>
+          <span>010-5925-7561</span>
+        </div>
+        <div class="contact-item">
+          <span class="icon">💬</span>
+          <span>카카오 ID: dd7561</span>
+        </div>
+        <div class="contact-item" style="font-size:12px;color:var(--text-muted);">
+          <span class="icon">⏰</span>
+          <span>공급가는 카카오·전화로 문의</span>
+        </div>
+        <a href="https://open.kakao.com/o/sdY9NIri" target="_blank" rel="noopener" class="btn-contact-kakao">
+          💬 카카오 오픈채팅 바로가기
+        </a>
       </div>
     </aside>
+
+    <!-- Content -->
     <div class="content-area">
-      <div id="category-pills" class="category-pills"><button class="pill active" data-cat="all">전체</button></div>
+
+      <div id="category-pills" class="category-pills">
+        <button class="pill active" data-cat="all">전체</button>
+      </div>
+
       <div class="toolbar">
         <div id="result-info" class="result-info">로딩 중...</div>
         <div class="toolbar-right">
@@ -120,7 +192,9 @@
           </div>
         </div>
       </div>
+
       <div id="product-grid" class="product-grid">
+        <!-- 스켈레톤 -->
         <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
         <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
         <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
@@ -128,20 +202,30 @@
         <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
         <div class="product-card" style="pointer-events:none;"><div class="card-img"><div class="skeleton" style="width:100%;height:100%;"></div></div><div class="card-body"><div class="skeleton" style="height:12px;width:60%;margin-bottom:8px;"></div><div class="skeleton" style="height:16px;width:90%;margin-bottom:6px;"></div><div class="skeleton" style="height:14px;width:70%;"></div></div></div>
       </div>
+
       <div id="load-more-wrap" class="load-more-wrap" style="display:none;">
         <button id="load-more-btn" class="btn-load-more" onclick="loadMore()">더 보기</button>
       </div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p><strong style="color:var(--text-secondary)">(주)마스터</strong> &nbsp;|&nbsp; 수산·농축산물 전문 유통 &nbsp;|&nbsp; 📞 010-5925-7561 &nbsp;|&nbsp; 💬 카카오 ID: dd7561</p>
-      <p style="margin-top:6px;font-size:12px;">본 카탈로그는 B2B 거래처 전용입니다. 공급단가는 담당자에게 문의해 주세요.</p>
+      <p>
+        <strong style="color:var(--text-secondary)">(주)마스터</strong> &nbsp;|&nbsp;
+        수산·농축산물 전문 유통
+        &nbsp;|&nbsp; 📞 010-5925-7561 &nbsp;|&nbsp; 💬 카카오 ID: dd7561
+      </p>
+      <p style="margin-top:6px;font-size:12px;">
+        본 카탈로그는 B2B 거래처 전용입니다. 공급단가는 담당자에게 문의해 주세요.
+      </p>
     </div>
   </footer>
 
+  <!-- Modal -->
   <div id="modal-overlay" class="modal-overlay" role="presentation"></div>
+
   <script src="./js/app.js"></script>
 </body>
 </html>
