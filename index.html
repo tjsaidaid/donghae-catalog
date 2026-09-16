@@ -62,13 +62,16 @@ a{color:inherit;text-decoration:none;}
 .header-stats{display:flex;gap:22px;flex:none;}
 .hstat .v{font-size:20px;font-weight:800;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums;}
 .hstat .k{font-size:10.5px;color:var(--ink3);letter-spacing:.06em;}
-.hero{background:linear-gradient(135deg,#b8cef5 0%,#c9b8f0 50%,#f0b8d4 100%);color:#2a2060;padding:36px 28px 32px;}
-[data-theme="dark"] .hero{background:linear-gradient(135deg,#1a2540 0%,#2a1a40 50%,#401a2a 100%);color:#e8ecf4;}
-.hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.hero-text h1{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:#1a1060;}
-[data-theme="dark"] .hero-text h1{color:#e8ecf4;}
-.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:540px;word-break:keep-all;overflow-wrap:break-word;color:#3a3070;}
-[data-theme="dark"] .hero-text p{color:#a0abbe;}
+.hero{background:linear-gradient(90deg,#b8ddff 0%,#d4eeff 45%,#eaf7ff 100%);color:#1a3ab8;padding:36px 28px 32px;position:relative;overflow:hidden;}
+[data-theme="dark"] .hero{background:linear-gradient(90deg,#163050 0%,#1a2848 50%,#152038 100%);color:#c8dcff;}
+.hero-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;z-index:1;}
+.hero-logo-circle{width:132px;height:132px;border-radius:50%;background:linear-gradient(145deg,#5b8cff 0%,#2f62f0 55%,#1e4de0 100%);box-shadow:0 8px 28px rgba(47,98,240,.38),inset 0 2px 8px rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;flex:none;}
+.hero-logo-eng{font-size:32px;font-weight:900;font-style:italic;color:#fff;letter-spacing:-1px;text-shadow:2px 2px 6px rgba(0,0,80,.32);}
+.hero-text{flex:1;min-width:240px;}
+.hero-text h1{font-size:28px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:#1a3ab8;}
+[data-theme="dark"] .hero-text h1{color:#d4e4ff;}
+.hero-text p{font-size:14px;margin-top:8px;line-height:1.8;max-width:560px;word-break:keep-all;overflow-wrap:break-word;color:#1e3fb8;}
+[data-theme="dark"] .hero-text p{color:#a8c0e8;}
 .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
 .hero-badge{background:rgba(255,255,255,.55);border:1px solid rgba(100,80,200,.25);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:#3a2080;}
 [data-theme="dark"] .hero-badge{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#c8b8f0;}
@@ -181,6 +184,7 @@ body.admin-on .spec-edit-btn{display:block;}
   .tab-inner{padding:0 10px;}
   .tab-btn{padding:12px 11px;font-size:12.5px;}
   .hero{padding:24px 16px 20px;}
+  .hero-logo-circle{display:none;}
   .hero-text h1{font-size:19px;}
   .hero-box{min-width:0;max-width:100%;width:100%;}
   .main-wrap{padding:14px 12px 0;}
@@ -234,6 +238,7 @@ body.admin-on .spec-edit-btn{display:block;}
 
 <section class="hero">
   <div class="hero-inner">
+    <div class="hero-logo-circle" aria-hidden="true"><span class="hero-logo-eng">Master</span></div>
     <div class="hero-text">
       <h1>(주)마스터</h1>
       <p>동해, 군산, 인천, 통영, 경기, 부산 등 전국 각지에 창고를 자체 운영하여 산지에서 직접 수매 후 유통하고 있는 수산물 전문 유통사입니다.<br><br>
